@@ -1,6 +1,8 @@
+import { TestText } from "./style";
+
 function Body() {
     return (
-        <p>main page</p>
+        <TestText>main page</TestText>
     )
 }
 

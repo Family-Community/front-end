@@ -6,7 +6,8 @@ function main() {
     return (
         <Wrapper>
             {/* <Header></Header> */}
-            <Body></Body>
+            <Body>
+            </Body>
             {/* <Footer></Footer> */}
         </Wrapper>
     )
