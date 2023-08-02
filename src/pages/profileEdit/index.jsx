@@ -5,7 +5,7 @@ import Wrapper from "../../style/wrapper";
 function profileEdit() {
     return (
         <Wrapper>
-            {/* <Header></Header> */}
+            <Header></Header>
             <Body></Body>
             {/* <Footer></Footer> */}
         </Wrapper>
