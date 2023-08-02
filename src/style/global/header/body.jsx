@@ -1,10 +1,12 @@
 import { HeaderBox } from "./style"
 
 function Body() {
-    
+    const handleOnClick = (e) => {
+        console.log('logo click event');
+    }
     return (
         <HeaderBox>
-            <p>LOGO</p>
+            <p onClick={handleOnClick}>LOGO</p>
         </HeaderBox>
     )
 }
