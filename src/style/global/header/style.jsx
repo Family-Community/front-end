@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import logo from "../../../assets/images/logo.png";
 export const HeaderBox = styled.div`
     display: flex;
     flex-direction: column;
@@ -7,12 +7,14 @@ export const HeaderBox = styled.div`
     align-items: center;
     height: 50px;
     p{  
-        width: 50px;
-        height: 30px;
+        width: 70px;
+        height: 40px;
         line-height: 30px;
         text-align: center;
         margin: 0;
-        border: 1px solid #000;
-        box-sizing: border-box;
+        background-image: url(${logo});
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
     }
 `

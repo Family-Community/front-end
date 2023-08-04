@@ -6,7 +6,7 @@ function Body() {
     }
     return (
         <HeaderBox>
-            <p onClick={handleOnClick}>LOGO</p>
+            <p onClick={handleOnClick}></p>
         </HeaderBox>
     )
 }
