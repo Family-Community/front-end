@@ -1,6 +1,6 @@
 function Body() {
     return (
-        <p>singup page</p>
+        <p>main page</p>
     )
 }
 
