@@ -1,4 +1,4 @@
-import { MainBody } from "./style";
+import { SignupBody } from "./style";
 function Body() {
 
     // 만들기 버튼 누를 시
@@ -12,7 +12,7 @@ function Body() {
         console.log(e);
     }
     return (
-        <MainBody>
+        <SignupBody>
             <form onSubmit={handleOnSubmit}>
                 <p>가족 이름 : <input type="text" name="" id="" /></p>
                 <p>입장 번호 : <input type="password" name="" id="" /></p>
@@ -51,7 +51,7 @@ function Body() {
                 </div>
                 <button type="submit">가족 만들기</button>
             </form>
-        </MainBody>
+        </SignupBody>
     )
 }
 

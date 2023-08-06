@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import profile from "../../../src/assets/images/profile.svg";
-export const MainBody = styled.div`
+export const SignupBody = styled.div`
     padding-top: 30px;
     form{
         p{
