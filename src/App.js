@@ -14,7 +14,7 @@ function App() {
         <Route path={`/main`} element={<Main />}></Route>
         <Route path={`/mypage`} element={<Mypage />}></Route>
         <Route path={`/family_code/profile`} element={<Profile />}></Route>
-        <Route path={`/profileAdd`} element={<ProfileAdd />}></Route>
+        <Route path={`/family_code/member_id/profileAdd`} element={<ProfileAdd />}></Route>
         <Route path={`/profileEdit`} element={<ProfileEdit />}></Route>
         <Route path={`/family_code/profileAuth`} element={<ProfileAuth />}></Route>
       </Routes>
