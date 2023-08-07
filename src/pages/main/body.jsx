@@ -1,50 +1,83 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { ImageContainer, MainHeaderBox, ButtonContainer } from "./style"
+import { LogoContainer } from "./style";
+import { MainBox } from "./style"
+import profile from '../../assets/images/profile.svg';
+import photoex from '../../assets/images/photoex.png';
 
 function Body() {
+    //헤더
+    function MainHeader() {
+        const handleOnClick = (e) => {
+            console.log('logo click event');
+        }
+        // // 검색 기능
+        // const Search = () => {
 
-    // 검색 기능 컴포넌트
-    const Search = () => {
-        
-        const [searchTerm, setSearchTerm] = useState('');
-        const [searchResults, setSearchResults] = useState([]);
+        //     return (
+        //             <input
+        //                 type="text"
+        //                 placeholder="제목,작성자,내용 검색하기"
+        //             />
 
-        //검색 결과 얻는 함수
-        const getSearchResults = async (searchTerm) => {
-            //api 호출 & db에서 검색 결과 가져옴
-            //setSearchResults 함수를 통해 state에 [...검색 결과 배열] 저장됨
-        };
+        //     );
 
-        //검색어 변경 함수
-        const handleSearchChange = (event) => {
-            const { value } = event.target;
-            setSearchTerm(value);
-            getSearchResults(value);
-        };
+        // };
 
-        return(
-            <div>
-                <input 
+        // //프로필
+        // const Profile = () => {
+        //     return(
+        //         <Link to="../mypage">
+        //             <img src={profile} />
+        //         </Link>
+        //     )
+        // }
+
+        return (
+            <MainHeaderBox>
+                <p onClick={handleOnClick}></p>
+                <input
                     type="text"
-                    value={searchTerm}
-                    onChange={handleSearchChange}
-                    placeholder="검색" 
+                    placeholder="게시물 검색"
                 />
-                <ul>
-                    {searchResults.map((result) => (
-                        <li key={result.id}>{result.name}</li>
-                    ))}
-                </ul>
-            </div>
-        );
-    };
+                <Link to="../mypage">
+                    <img src={profile} />
+                </Link>
+            </MainHeaderBox>
 
-    
+        )
+    }
     return (
-        <Search>
-                <p>main page</p>
-        </Search>
+        <div>
+            <MainHeader />
+            <MainBox>
+                <img src={profile} />
+                <p>이름</p>
+                <p>삭제</p>
+                <p>수정</p>
+                <ImageContainer>
+                    <img src={photoex} />
+                </ImageContainer>
+                <p>제목</p>
+                <p>내용</p>
+                <p>😄</p>
+                <p>👍</p>
+                <p>😥</p>
+                <p>💗</p>
+                <p>😧</p>
+                <p>✔</p>
+            </MainBox>
+            <ButtonContainer>
+                <button type="submit" all="unset">글쓰기</button>
+            </ButtonContainer>
+        </div>
+
+
 
     )
-}
+
+};
+
 
 export default Body;
