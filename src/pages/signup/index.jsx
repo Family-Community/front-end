@@ -2,7 +2,7 @@ import Body from "./body";
 import Header from "../../style/global/header";
 import Footer from "../../style/global/footer";
 import Wrapper from "../../style/wrapper";
-function main() {
+function Signup() {
     return (
         <Wrapper>
             <Header></Header>
@@ -13,4 +13,4 @@ function main() {
     )
 }
 
-export default main;
+export default Signup;
