@@ -35,10 +35,10 @@ function Body() {
     return (
         <SignupBody>
             <form onSubmit={handleOnSubmit}>
-                <p>가족 이름 : <input type="text" name="" id="" /></p>
-                <p>입장 번호 : <input type="password" name="" id="" /></p>
-                <p>입장 번호 확인 : <input type="password" name="" id="" /></p>
-                <p>내 이름 :  <input type="text" name="" id="" /></p>
+                <p>가족 이름 : <input type="text" name="" id="" placeholder="예) 호동이네"/></p>
+                <p>입장 번호 : <input type="password" name="" id="" placeholder="예) 1234"/></p>
+                <p>입장 번호 확인 : <input type="password" name="" id="" placeholder="입장번호와 같게요!"/></p>
+                <p>내 이름 :  <input type="text" name="" id="" placeholder="이름을 적어주세요!"/></p>
                 <div>
                     <p>내 사진 <span>(필수는 아니에요)</span></p> 
                     <input 
