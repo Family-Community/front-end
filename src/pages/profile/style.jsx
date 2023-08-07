@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import plus from "../../../src/assets/images/plus.svg";
+import kakao from "../../../src/assets/images/kakao.png";
 export const ProfileBody = styled.div`
     margin: 30px 0px;
     div{
@@ -11,42 +12,70 @@ export const ProfileBody = styled.div`
         justify-content: space-around;
         div{
             display: block;
-            width: 70px;
+            width: 25%;
             margin: 10px 0px;
             p{  
                 display: block;
-                height: 70px;
-                width: 100%;
+                height: 75px;
+                width: 90%;
                 margin-bottom: 5px;
                 border: 1px solid #000;
                 box-sizing: border-box;
                 border-radius: 20px;
+                margin: 0 auto;
             }
             span{
                 display: block;
                 text-align: center;
-                font-size: 90%;
+                font-size: 110%;
+                margin-top: 3%;
             }
         }
     }
-    #addProfileBtn{
-        display: block;
-        height: 50px;
-        width: 50px;
-        background-image: url(${plus});
-        background-repeat: no-repeat;
-        background-size: 65%;
-        background-position: center;
+    div:nth-child(2){
+        display: flex;
+        width: 60%;
         margin: 0 auto;
-        border: 1px solid #000;
-        border-radius: 50%;
-        margin-top: 20px;
-    }
-    #addProfileBtn::after{
-        content: "추가하기";
-        display: block;
-        text-align: center;
-        transform: translateY(60px);
-        font-size: 90%;
+        #addProfileBtn{
+            display: block;
+            height: 50px;
+            width: 50px;
+            background-image: url(${plus});
+            background-repeat: no-repeat;
+            background-size: 65%;
+            background-position: center;
+            margin: 0 auto;
+            border: 1px solid #000;
+            box-sizing: border-box;
+            border-radius: 50%;
+            margin-top: 20px;
+        }
+        #addProfileBtn::after{
+            content: "추가하기";
+            display: block;
+            text-align: center;
+            transform: translateY(60px);
+            font-size: 80%;
+        }
+        #kakaotalk-sharing-btn{
+            display: block;
+            height: 50px;
+            width: 50px;
+            background-image: url(${kakao});
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            margin: 0 auto;
+            border-radius: 50%;
+            margin-top: 20px;
+        }
+        #kakaotalk-sharing-btn::after{
+            content: "카카오톡";
+            display: block;
+            text-align: center;
+            transform: translateY(60px);
+            font-size: 80%;
+        }
+
     }
 `
