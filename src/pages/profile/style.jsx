@@ -12,12 +12,12 @@ export const ProfileBody = styled.div`
         justify-content: space-around;
         div{
             display: block;
-            width: 25%;
+            width: calc(100% / 3);
             margin: 10px 0px;
             p{  
                 display: block;
                 height: 75px;
-                width: 90%;
+                width: 65%;
                 margin-bottom: 5px;
                 border: 1px solid #000;
                 box-sizing: border-box;
