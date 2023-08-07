@@ -69,7 +69,7 @@ function Body() {
                 <p>✔</p>
             </MainBox>
             <ButtonContainer>
-                <button type="submit" all="unset">글쓰기</button>
+                <button type="submit">글쓰기</button>
             </ButtonContainer>
         </div>
 
