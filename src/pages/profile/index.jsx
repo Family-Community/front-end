@@ -7,7 +7,7 @@ function profile() {
         <Wrapper>
             <Header></Header>
             <Body></Body>
-            {/* <Footer></Footer> */}
+            <Footer></Footer>
         </Wrapper>
     )
 }
