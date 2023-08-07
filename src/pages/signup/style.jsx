@@ -13,7 +13,7 @@ export const SignupBody = styled.div`
             font-weight: 700;
         }
         p input{
-            font-size: 110%;
+            font-size: 90%;
             text-align: center;
             width: 50%;
         }
