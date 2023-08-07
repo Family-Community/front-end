@@ -39,10 +39,10 @@ export const SignupBody = styled.div`
         div:nth-child(5){
             p{
                 text-align: center;
-                font-size: 120%;
+                font-size: 110%;
+                font-weight: 700;
                 span{
                     text-decoration: underline;
-                    color: red;
                 }
             }
             input{
@@ -78,10 +78,10 @@ export const SignupBody = styled.div`
         div:nth-child(6){
             p{
                 text-align: center;
-                font-size: 120%;
+                font-size: 110%;
+                font-weight: 700;
                 span{
                     text-decoration: underline;
-                    color: red;
                 }
             }
             div{
@@ -146,10 +146,10 @@ export const SignupBody = styled.div`
             background-color: #aaaaaa;
             color: #fff;
             margin: 0 auto;
-            font-size: 120%;
+            font-size: 110%;
             line-height: 2;
             border-radius: 10px;
-            width: 30%;
+            width: 40%;
             margin-top: 20px;
         }
     }
