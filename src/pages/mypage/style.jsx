@@ -10,6 +10,7 @@ export const MyPageHeaderBox = styled.div`
     display: inline-block;
     h2{
         margin-bottom: 0;
+        margin-top: 0;
     }
 `
 
@@ -29,13 +30,14 @@ export const MyPageBox = styled.div`
 
     p:nth-child(2){
         margin: 0;
-        font-size: 110%;
+        font-size: 100%;
         line-height: 2.5;
         display: inline-block;
         width: 20%;
         text-align: left;
         padding-left: 5px;
-        padding-bottom: 3px;
+        padding-bottom: 5px;
+        height: 25px;
     }
 
     p:nth-child(3){
@@ -50,6 +52,7 @@ export const MyPageBox = styled.div`
 
     p:nth-child(4){
         margin: 0;
+        padding-right: 6px;
         font-size: 80%;
         line-height: 2.5;
         display: inline-block;
@@ -87,7 +90,7 @@ export const MyPageBox = styled.div`
 
     p:nth-child(8){
         margin: 0;
-        font-size: 130%;
+        font-size: 110%;
         line-height: 2.5;
         display: inline-block;
         width: 14%;
@@ -97,50 +100,50 @@ export const MyPageBox = styled.div`
 
     p:nth-child(9){
         margin: 0;
-        font-size: 130%;
+        font-size: 110%;
         line-height: 2.5;
         display: inline-block;
-        width: 14%;
+        width: 13%;
         text-align: center;
         padding-left: 10px;
     }
 
     p:nth-child(10){
         margin: 0;
-        font-size: 130%;
+        font-size: 110%;
         line-height: 2.5;
         display: inline-block;
-        width: 14%;
+        width: 13%;
         text-align: center;
         padding-left: 10px;
     }
 
     p:nth-child(11){
         margin: 0;
-        font-size: 130%;
+        font-size: 110%;
         line-height: 2.5;
         display: inline-block;
-        width: 14%;
+        width: 13%;
         text-align: center;
         padding-left: 10px;
     }
 
     p:nth-child(12){
         margin: 0;
-        font-size: 130%;
+        font-size: 110%;
         line-height: 2.5;
         display: inline-block;
-        width: 14%;
+        width: 13%;
         text-align: center;
         padding-left: 10px;
     }
 
     p:nth-child(13){
         margin: 0;
-        font-size: 130%;
+        font-size: 110%;
         line-height: 2.5;
         display: inline-block;
-        width: 14%;
+        width: 13%;
         text-align: center;
         padding-left: 10px;
     }

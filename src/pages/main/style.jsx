@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from "styled-components";
 import logo from "../../assets/images/logo.png";
 import profile from '../../assets/images/profile.svg';
@@ -5,16 +6,18 @@ import profile from '../../assets/images/profile.svg';
 
 export const MainHeaderBox = styled.div`
     display: flex;
-    justify-content: space-between; 
     align-items: center;
+    justify-content: space-between;
 
     p {  
-        width: 70px;
-        height: 40px;
+        width: 60px;
+        height: 35px;
         line-height: 30px;
         text-align: left;
-        margin: 0 ;
-        padding-right: 50;
+        margin-left: 15px;
+        margin-right: 30px;
+        margin-top: 0;
+        margin-bottom: 0;
         background-image: url(${logo});
         background-position: left;
         background-repeat: no-repeat;
@@ -23,42 +26,36 @@ export const MainHeaderBox = styled.div`
     }
 
     input {
-        
+        margin-left: 30px;
+        width: 100px;
+        border:none;
         text-align: center;
     }
 
-    img {
-        width: 30px;
-        height: 30px;
-        margin : 0;
-        float: right;
+    img:nth-child(3){
+        margin-left: 0;
+        margin-right: 110px;
+        width: 13px;
+        height: 13px;
+    }
+
+    img:nth-child(4) {
+        width: 25px;
+        height: 25px;
+        margin-left: 0;
+        margin-right: 30px;
+        margin-top: 0;
+        margin-bottom: 0;
+
     }
 `
-// export const LogoContainer = styled.div`
-//     display: flex;
-//     margin-right: 0;
-//     padding-right: 0;
-//     flex-direction: column;
-//     justify-content: left;
-//     align-items: left;
-//     height: 50px;
-//     p:nth-child(1){  
-//         width: 70px;
-//         height: 40px;
-//         line-height: 30px;
-//         text-align: center;
-//         margin: 0;
-//         background-image: url(${logo});
-//         background-position: center;
-//         background-repeat: no-repeat;
-//         background-size: contain;
-//     }
-//     p:nth-child(1) input {
-//         align-items: center;
-//     }
 
-// `;
-
+export const ProfileLink = styled(Link)`
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    margin-right: 15px;
+`;
 
 export const MainBox = styled.div`
     border: 1px solid #ccc;
@@ -69,20 +66,21 @@ export const MainBox = styled.div`
     img:nth-child(1) {
         width: 25px;
         height: 25px;
-        margin: 0px;
         text-align: left;
         padding-top:3px;
+        margin: 0;
     }
 
     p:nth-child(2){
         margin: 0;
-        font-size: 110%;
+        font-size: 100%;
         line-height: 2.5;
         display: inline-block;
         width: 20%;
         text-align: left;
         padding-left: 5px;
-        padding-bottom: 3px;
+        padding-bottom: 5px;
+        height: 25px;
     }
 
     p:nth-child(3){
@@ -97,6 +95,7 @@ export const MainBox = styled.div`
 
     p:nth-child(4){
         margin: 0;
+        padding-right: 6px;
         font-size: 80%;
         line-height: 2.5;
         display: inline-block;
@@ -134,60 +133,60 @@ export const MainBox = styled.div`
 
     p:nth-child(8){
         margin: 0;
-        font-size: 130%;
+        font-size: 110%;
         line-height: 2.5;
         display: inline-block;
-        width: 14%;
+        width: 13%;
         text-align: center;
         padding-left: 10px;
     }
 
     p:nth-child(9){
         margin: 0;
-        font-size: 130%;
+        font-size: 110%;
         line-height: 2.5;
         display: inline-block;
-        width: 14%;
+        width: 13%;
         text-align: center;
         padding-left: 10px;
     }
 
     p:nth-child(10){
         margin: 0;
-        font-size: 130%;
+        font-size: 110%;
         line-height: 2.5;
         display: inline-block;
-        width: 14%;
+        width: 13%;
         text-align: center;
         padding-left: 10px;
     }
 
     p:nth-child(11){
         margin: 0;
-        font-size: 130%;
+        font-size: 110%;
         line-height: 2.5;
         display: inline-block;
-        width: 14%;
+        width: 13%;
         text-align: center;
         padding-left: 10px;
     }
 
     p:nth-child(12){
         margin: 0;
-        font-size: 130%;
+        font-size: 110%;
         line-height: 2.5;
         display: inline-block;
-        width: 14%;
+        width: 13%;
         text-align: center;
         padding-left: 10px;
     }
 
     p:nth-child(13){
         margin: 0;
-        font-size: 130%;
+        font-size: 110%;
         line-height: 2.5;
         display: inline-block;
-        width: 14%;
+        width: 13%;
         text-align: center;
         padding-left: 10px;
     }

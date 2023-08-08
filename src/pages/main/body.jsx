@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ImageContainer, MainHeaderBox, ButtonContainer } from "./style"
-import { LogoContainer } from "./style";
+import { ImageContainer, MainHeaderBox, ButtonContainer, ProfileLink } from "./style"
 import { MainBox } from "./style"
+import glasses from '../../assets/images/magnifying-glass-solid.svg';
 import profile from '../../assets/images/profile.svg';
 import photoex from '../../assets/images/photoex.png';
 
@@ -41,9 +41,10 @@ function Body() {
                     type="text"
                     placeholder="게시물 검색"
                 />
-                <Link to="../mypage">
-                    <img src={profile} />
-                </Link>
+                <img src={glasses} />
+                <ProfileLink to="../mypage">
+                    <img src={profile} alt="Profile" />
+                </ProfileLink>
             </MainHeaderBox>
 
         )
