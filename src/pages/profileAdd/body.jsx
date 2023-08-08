@@ -21,7 +21,7 @@ function Body() {
         <ProfileAddBody>
             <form onSubmit={handleOnSubmit}>
                 <p>이름 : <input type="text" name="" id="" /></p>
-                <p>내 사진 <span>(필수는 아니에요)</span></p>
+                <p>내 사진 <span>(필수는 아니예요)</span></p>
                 <input 
                 type="file" 
                 name="" 
