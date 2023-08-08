@@ -40,7 +40,7 @@ function Body() {
                 <p>입장 번호 확인 : <input type="password" name="" id="" placeholder="예) 1234"/></p>
                 <p>내 이름 :  <input type="text" name="" id="" placeholder="이름을 적어주세요"/></p>
                 <div>
-                    <p>내 사진 <span>(필수는 아니에요)</span></p> 
+                    <p>내 사진 <span>(필수는 아니예요)</span></p> 
                     <input 
                     id="uploadFile" 
                     type="file" 
@@ -51,7 +51,7 @@ function Body() {
                     <div id="photoBox"></div>
                 </div>
                 <div>
-                   <p>컬러 <span>(가족을 대표하는 색이 될거에요)</span></p>
+                   <p>컬러 <span>(가족을 대표하는 색이 될거예요)</span></p>
                    <div>
                         <div>
                             <input type="radio" name="color" id="#3CAEFF" />
