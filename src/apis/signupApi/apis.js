@@ -8,8 +8,8 @@ const serverApi = axios.create({
     },
 });
 
-export const createFamily = async (family_name, color, entry_number) => {
-    await serverApi.post(`https://port-0-back-end-eu1k2llkz11als.sel4.cloudtype.app/createfamily`, {'family_name':family_name, 'color':color, 'entry_nubmer':entry_number}).then((response)=>{
+export const createFamily = async (family_name, color, entry_number, name, formData) => {
+    await serverApi.post(`https://port-0-back-end-eu1k2llkz11als.sel4.cloudtype.app/createfamily/`, {'family_name':family_name, 'color':color, 'entry_number':entry_number, 'name':name, 'image':''}).then((response)=>{
         console.log(response);
     })
 }

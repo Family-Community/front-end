@@ -49,7 +49,7 @@ function Body() {
                 color = e.target[i].id;
             }
         }
-        createFamily(family_name, color, entry_number);
+        createFamily(family_name, color, entry_number, name, formData);
     }
 
     // 컬러 선택 시
