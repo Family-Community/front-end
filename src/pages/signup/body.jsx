@@ -1,4 +1,5 @@
 import { SignupBody } from "./style";
+import { createFamily } from "../../apis/signupApi/apis";
 function Body() {
 
     // 사진 업로드 시 photoBox에 띄워주기
@@ -13,7 +14,42 @@ function Body() {
     // 만들기 버튼 누를 시
     const handleOnSubmit = (e) => {
         e.preventDefault();
-        console.log(e);
+        // 가족 이름
+        const family_name = e.target[0].value;
+        if (!family_name){
+            alert('가족 이름을 입력해 주세요!');
+        }
+        // 입장 번호
+        const entry_number = e.target[1].value;
+        const entry_number_check = e.target[2].value;
+        if (entry_number.length !== 4){
+            alert('입장 번호 형식을 맞춰주세요!');
+        }
+        else if(entry_number !== entry_number_check){
+            alert('입장번호와 입장번호 확인이 일치하지 않아요!');
+        }
+        // 이름
+        const name = e.target[3].value;
+        if (!name){
+            alert('이름을 입력해 주세요!');
+        }
+        // 사진
+        const photo = e.target[4].files[0];
+        const formData = new FormData();
+        if(photo){
+            formData.append('photo', photo);
+        }
+        else{
+            formData.append('photo','');
+        }
+        // 컬러
+        let color = '';
+        for (let i=5; i<=10; i++){
+            if (e.target[i].checked){
+                color = e.target[i].id;
+            }
+        }
+        createFamily(family_name, color, entry_number);
     }
 
     // 컬러 선택 시
