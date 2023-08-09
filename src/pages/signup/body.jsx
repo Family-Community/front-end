@@ -1,15 +1,22 @@
 import { SignupBody } from "./style";
 import { createFamily } from "../../apis/signupApi/apis";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 function Body() {
 
+    const navigate = useNavigate();
+    const [selectedImage, setSelectedImgae] = useState('');
     // 사진 업로드 시 photoBox에 띄워주기
     const handleOnChangePhoto = (e) => {
-        const selectedPhoto = e.target.files[0];
-        const selectedPhotoUrl = URL.createObjectURL(selectedPhoto);
+        const currImage = e.target.files[0];
+        // 이미지 띄워주고
+        const currImageUrl = URL.createObjectURL(currImage);
         
         const photoBox = document.getElementById(`photoBox`);
-        photoBox.style.backgroundImage = `url(${selectedPhotoUrl})`;
+        photoBox.style.backgroundImage = `url(${currImageUrl})`;
         photoBox.style.backgroundSize = `90%`;
+        // setting
+        setSelectedImgae(currImage);
     }
     // 만들기 버튼 누를 시
     const handleOnSubmit = (e) => {
@@ -33,15 +40,6 @@ function Body() {
         if (!name){
             alert('이름을 입력해 주세요!');
         }
-        // 사진
-        const photo = e.target[4].files[0];
-        const formData = new FormData();
-        if(photo){
-            formData.append('photo', photo);
-        }
-        else{
-            formData.append('photo','');
-        }
         // 컬러
         let color = '';
         for (let i=5; i<=10; i++){
@@ -49,7 +47,7 @@ function Body() {
                 color = e.target[i].id;
             }
         }
-        createFamily(family_name, color, entry_number, name, formData);
+        createFamily(navigate, family_name, color, entry_number, name, selectedImage);
     }
 
     // 컬러 선택 시
