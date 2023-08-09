@@ -57,9 +57,7 @@ function Body() {
                 <p>이름</p>
                 <p>삭제</p>
                 <p>수정</p>
-                <ImageContainer>
-                    <img src={photoex} />
-                </ImageContainer>
+                <img src={photoex} />
                 <p>제목</p>
                 <p>내용</p>
                 <p>😄</p>

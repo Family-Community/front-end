@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from "styled-components";
 import logo from "../../assets/images/logo.png";
 import profile from '../../assets/images/profile.svg';
@@ -11,12 +12,26 @@ export const MyPageHeaderBox = styled.div`
     h2{
         margin-bottom: 0;
         margin-top: 0;
+        padding-right: 35px;
+
+    img {
+
+    }
     }
 `
 
+export const MainLink = styled(Link)`
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin-left: 15px;
+    margin-top: 5px;
+    float: left;
+`;
+
 export const MyPageBox = styled.div`
     border: 1px solid #ccc;
-    margin: 10px;
+    margin: 20px;
     padding: 10px;
     position: relative;
 
@@ -65,9 +80,7 @@ export const MyPageBox = styled.div`
         width: 100%;
         height: 100%;
         object-fit: cover;
-        position: absolute;
-        top: 0;
-        left: 0;
+        padding-top: 10px;
     }
 
     p:nth-child(6){
@@ -149,12 +162,6 @@ export const MyPageBox = styled.div`
     }
 `
 
-export const ImageContainer = styled.div`
-    width: 100%;
-    padding-top: 50%;
-    position: relative;
-    overflow: hidden;
-`;
 
 export const ButtonContainer = styled.div`
     display: flex;

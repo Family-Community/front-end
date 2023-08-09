@@ -43,7 +43,7 @@ export const MainHeaderBox = styled.div`
         width: 25px;
         height: 25px;
         margin-left: 0;
-        margin-right: 30px;
+        margin-right: 15px;
         margin-top: 0;
         margin-bottom: 0;
 
@@ -59,7 +59,7 @@ export const ProfileLink = styled(Link)`
 
 export const MainBox = styled.div`
     border: 1px solid #ccc;
-    margin: 10px;
+    margin: 20px;
     padding: 10px;
     position: relative;
 
@@ -108,9 +108,7 @@ export const MainBox = styled.div`
         width: 100%;
         height: 100%;
         object-fit: cover;
-        position: absolute;
-        top: 0;
-        left: 0;
+        padding-top: 10px;
     }
 
     p:nth-child(6){
@@ -192,12 +190,6 @@ export const MainBox = styled.div`
     }
 `
 
-export const ImageContainer = styled.div`
-    width: 100%;
-    padding-top: 50%;
-    position: relative;
-    overflow: hidden;
-`;
 
 export const ButtonContainer = styled.div`
     display: flex;
