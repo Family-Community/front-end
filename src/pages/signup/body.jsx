@@ -1,55 +1,30 @@
 import { SignupBody } from "./style";
 import { createFamily } from "../../apis/signupApi/apis";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import useInput from "../../hooks/useInput";
 function Body() {
 
-    // 사진 업로드 시 photoBox에 띄워주기
+    // form 내의 변수들
+    const [familyName, onChangeFamilyName, setFamilyName] = useInput('');
+    const [entryNumber, onChangeEntryNumber, setEntryNumber] = useInput('');
+    const [entryNumberCheck, onChangeEntryNumberCheck, setEntryNumberCheck] = useInput('');
+    const [name, onChangeName, setName] = useInput('');
+    const [selectedImage, setSelectedImgae] = useState('');
+    const [color, setColor] = useState('');
+
+    // 사진 업로드 시
     const handleOnChangePhoto = (e) => {
-        const selectedPhoto = e.target.files[0];
-        const selectedPhotoUrl = URL.createObjectURL(selectedPhoto);
-        
+        const currImage = e.target.files[0];
+        // 이미지 띄워주기
+        const currImageUrl = URL.createObjectURL(currImage);
         const photoBox = document.getElementById(`photoBox`);
-        photoBox.style.backgroundImage = `url(${selectedPhotoUrl})`;
+        photoBox.style.backgroundImage = `url(${currImageUrl})`;
         photoBox.style.backgroundSize = `90%`;
-    }
-    // 만들기 버튼 누를 시
-    const handleOnSubmit = (e) => {
-        e.preventDefault();
-        // 가족 이름
-        const family_name = e.target[0].value;
-        if (!family_name){
-            alert('가족 이름을 입력해 주세요!');
-        }
-        // 입장 번호
-        const entry_number = e.target[1].value;
-        const entry_number_check = e.target[2].value;
-        if (entry_number.length !== 4){
-            alert('입장 번호 형식을 맞춰주세요!');
-        }
-        else if(entry_number !== entry_number_check){
-            alert('입장번호와 입장번호 확인이 일치하지 않아요!');
-        }
-        // 이름
-        const name = e.target[3].value;
-        if (!name){
-            alert('이름을 입력해 주세요!');
-        }
-        // 사진
-        const photo = e.target[4].files[0];
-        const formData = new FormData();
-        if(photo){
-            formData.append('photo', photo);
-        }
-        else{
-            formData.append('photo','');
-        }
-        // 컬러
-        let color = '';
-        for (let i=5; i<=10; i++){
-            if (e.target[i].checked){
-                color = e.target[i].id;
-            }
-        }
-        createFamily(family_name, color, entry_number, name, formData);
+        photoBox.style.border = `none`;
+
+        // selectedImage 바꿔주기
+        setSelectedImgae(currImage);
     }
 
     // 컬러 선택 시
@@ -63,18 +38,57 @@ function Body() {
         })
 
         // 선택된 컬러만 표시
-        const selectedColor = e.target.id;
-        const selectedColorLabel = document.getElementById(selectedColor);
+        const selectedColorLabelId = e.target.id;
+        const selectedColorLabel = document.getElementById(selectedColorLabelId);
         selectedColorLabel.style.border = `2px solid #000`;
+        
+        // selectedColor 설정
+        const selectedColor = e.target.htmlFor;
+        setColor(selectedColor);
+    }
 
+    // 만들기 버튼 누를 시
+    const navigate = useNavigate();
+    const handleOnSubmit = (e) => {
+        e.preventDefault();
+        if(!familyName){
+            alert('가족 이름을 설정해 주세요');
+        }
+        else if(!entryNumber || entryNumber.length > 4){
+            alert('네 자리 이하의 입장 번호를 설정해 주세요');
+        }
+        else if(entryNumber !== entryNumberCheck){
+            alert('입장 번호와 입장 번호 확인이 일치하지 않아요');
+        }
+        else if(!name){
+            alert('내 이름을 입력해 주세요');
+        }
+        else if(!color){
+            alert('컬러를 설정해 주세요');
+        }
+        else{
+            createFamily(navigate, familyName, color, entryNumber, name, selectedImage);
+        }
+    }
+
+    // 버튼 활성화 구현
+    if(familyName && entryNumber && entryNumberCheck && name && color){
+        const makeBtn = document.getElementById('makeBtn');
+        makeBtn.style.color = `#fff`;
+        makeBtn.innerText = `안방 만들기`;
+    }
+    else if ((familyName || entryNumber || entryNumberCheck || name || color) || (familyName && entryNumber && entryNumberCheck&& name && color)){
+        const makeBtn = document.getElementById('makeBtn');
+        makeBtn.style.color = `red`;
+        makeBtn.innerText = `정보가 부족해요`;
     }
     return (
         <SignupBody>
             <form onSubmit={handleOnSubmit}>
-                <p>가족 이름 : <input type="text" name="" id="" placeholder="예) 호동이네"/></p>
-                <p>입장 번호 : <input type="password" name="" id="" placeholder="예) 1234"/></p>
-                <p>입장 번호 확인 : <input type="password" name="" id="" placeholder="예) 1234"/></p>
-                <p>내 이름 :  <input type="text" name="" id="" placeholder="이름을 적어주세요"/></p>
+                <p>가족 이름 : <input type="text" name="" id="" placeholder="예) 호동이네" onChange={onChangeFamilyName}/></p>
+                <p>입장 번호 : <input type="password" name="" id="" placeholder="* 네 자리 이하 *" onChange={onChangeEntryNumber}/></p>
+                <p>입장 번호 확인 : <input type="password" name="" id="" placeholder="예) 1234" onChange={onChangeEntryNumberCheck}/></p>
+                <p>내 이름 :  <input type="text" name="" id="" placeholder="이름을 적어주세요"  onChange={onChangeName}/></p>
                 <div>
                     <p>내 사진 <span>(필수는 아니예요)</span></p> 
                     <input 
@@ -107,7 +121,7 @@ function Body() {
                         </div>
                    </div>
                 </div>
-                <button type="submit">가족 만들기</button>
+                <button type="submit" id="makeBtn">정보가 부족해요</button>
             </form>
         </SignupBody>
     )
