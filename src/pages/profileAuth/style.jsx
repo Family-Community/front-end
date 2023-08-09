@@ -33,15 +33,16 @@ export const ProfileAuthBody = styled.div`
         }
         button{
             border: none;
-            color: #fff;
+            color: red;
             background-color: #aaaaaa;
             display: block;
             width: 30%;
             line-height: 2.5;
             border-radius: 10px;
-            font-size: 110%;
+            font-size: 120%;
             margin: 0 auto;
             margin-top: 30px;
+            transition: all 0.5s;
         }
     }
 `
