@@ -16,6 +16,9 @@ export const SignupBody = styled.div`
             font-size: 90%;
             text-align: center;
             width: 50%;
+            border: 2px solid #aaaaaa;
+            box-sizing: border-box;
+            border-radius: 5px;
         }
         p:nth-child(1){
             input{
@@ -143,15 +146,16 @@ export const SignupBody = styled.div`
         }
         button{
             display: block;
+            color: #aaaaaa;
             border: none;
             background-color: #aaaaaa;
-            color: #fff;
             margin: 0 auto;
-            font-size: 110%;
+            font-size: 120%;
             line-height: 2;
             border-radius: 10px;
             width: 40%;
             margin-top: 20px;
+            transition: all 0.5s;
         }
     }
 `
