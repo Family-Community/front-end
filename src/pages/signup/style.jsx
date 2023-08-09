@@ -146,7 +146,7 @@ export const SignupBody = styled.div`
         }
         button{
             display: block;
-            color: #aaaaaa;
+            color: red;
             border: none;
             background-color: #aaaaaa;
             margin: 0 auto;

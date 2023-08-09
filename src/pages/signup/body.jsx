@@ -74,6 +74,7 @@ function Body() {
     if(familyName && entryNumber && name && color){
         const makeBtn = document.getElementById('makeBtn');
         makeBtn.style.color = `#fff`;
+        makeBtn.innerText = `안방 만들기`;
     }
     return (
         <SignupBody>
@@ -114,7 +115,7 @@ function Body() {
                         </div>
                    </div>
                 </div>
-                <button type="submit" id="makeBtn">가족 만들기</button>
+                <button type="submit" id="makeBtn">정보가 부족해요</button>
             </form>
         </SignupBody>
     )
