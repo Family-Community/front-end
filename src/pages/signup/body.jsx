@@ -21,6 +21,7 @@ function Body() {
         const photoBox = document.getElementById(`photoBox`);
         photoBox.style.backgroundImage = `url(${currImageUrl})`;
         photoBox.style.backgroundSize = `90%`;
+        photoBox.style.border = `none`;
 
         // selectedImage 바꿔주기
         setSelectedImgae(currImage);
@@ -71,10 +72,15 @@ function Body() {
     }
 
     // 버튼 활성화 구현
-    if(familyName && entryNumber && name && color){
+    if(familyName && entryNumber && entryNumberCheck && name && color){
         const makeBtn = document.getElementById('makeBtn');
         makeBtn.style.color = `#fff`;
         makeBtn.innerText = `안방 만들기`;
+    }
+    else if ((familyName || entryNumber || entryNumberCheck || name || color) || (familyName && entryNumber && entryNumberCheck&& name && color)){
+        const makeBtn = document.getElementById('makeBtn');
+        makeBtn.style.color = `red`;
+        makeBtn.innerText = `정보가 부족해요`;
     }
     return (
         <SignupBody>
