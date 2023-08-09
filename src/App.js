@@ -16,7 +16,7 @@ function App() {
         <Route path={`/family_code/profile`} element={<Profile />}></Route>
         <Route path={`/family_code/member_id/profileAdd`} element={<ProfileAdd />}></Route>
         <Route path={`/profileEdit`} element={<ProfileEdit />}></Route>
-        <Route path={`/family_code/profileAuth`} element={<ProfileAuth />}></Route>
+        <Route path={`/:family_code/profileAuth`} element={<ProfileAuth />}></Route>
       </Routes>
     </Router>
   );
