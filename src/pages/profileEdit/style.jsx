@@ -8,6 +8,7 @@ export const EditHeaderBox = styled.div`
     display: inline-block;
     h2{
         margin-bottom: 0;
+        margin-top: 0;
     }    
 `
 
