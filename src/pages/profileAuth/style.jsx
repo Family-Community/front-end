@@ -14,7 +14,7 @@ export const ProfileAuthBody = styled.div`
             line-height: 2;
         }
         p:nth-child(1){
-            
+            font-size: 150%;
         }
         p:nth-child(2){
 

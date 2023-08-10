@@ -19,6 +19,7 @@ export const SignupBody = styled.div`
             border: 2px solid #aaaaaa;
             box-sizing: border-box;
             border-radius: 5px;
+            transition: all 0.5s;
         }
         p:nth-child(1){
             input{
@@ -45,6 +46,7 @@ export const SignupBody = styled.div`
                 text-align: center;
                 font-size: 110%;
                 font-weight: 700;
+                transition: all 0.5s;
                 span{
                     text-decoration: underline;
                 }
@@ -62,6 +64,7 @@ export const SignupBody = styled.div`
                 background-color: #aaaaaa;
                 color: #fff;
                 border-radius: 10px;
+                transition: all 0.5s;
                 span{
                     text-decoration: underline;
                 }
@@ -84,6 +87,7 @@ export const SignupBody = styled.div`
                 text-align: center;
                 font-size: 110%;
                 font-weight: 700;
+                transition: all 0.5s;
                 span{
                     text-decoration: underline;
                 }

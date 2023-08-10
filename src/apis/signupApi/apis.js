@@ -22,7 +22,7 @@ export const createFamily = async (navigate, familyName, color, entryNumber, nam
 
 export const createFirstMember = async (navigate, familyName, id, name, selectedImage, familyCode) => {
     await serverApiMember.post(`https://port-0-back-end-eu1k2llkz11als.sel4.cloudtype.app/group/${id}/profile/create/`, {'name':name, 'image':selectedImage}).then((response)=>{  
-        alert(`${familyName} 안방으로 초대합니다.`);
+        alert(`${familyName} 안방으로 초대합니다`);
         navigate(`/${familyCode}/profileAuth`);
     })
 }

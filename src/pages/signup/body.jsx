@@ -42,8 +42,26 @@ function Body() {
         const selectedColorLabel = document.getElementById(selectedColorLabelId);
         selectedColorLabel.style.border = `2px solid #000`;
         
-        // selectedColor 설정
+        // 실시간 컬러 변경
         const selectedColor = e.target.htmlFor;
+        const familyNameInput = document.getElementById('familyNameInput');
+        familyNameInput.style.border = `2px solid ${selectedColor}`;
+        const entryNumberInput = document.getElementById('entryNumberInput');
+        entryNumberInput.style.border = `2px solid ${selectedColor}`;
+        const entryNumberCheckInput = document.getElementById('entryNumberCheckInput');
+        entryNumberCheckInput.style.border = `2px solid ${selectedColor}`;
+        const nameInput = document.getElementById('nameInput');
+        nameInput.style.border = `2px solid ${selectedColor}`;
+        const imageGuide = document.getElementById('imageGuide');
+        imageGuide.style.color = `${selectedColor}`;
+        const uploadFileLabel = document.getElementById('uploadFileLabel');
+        uploadFileLabel.style.backgroundColor = `${selectedColor}`;
+        const colorGuide = document.getElementById('colorGuide');
+        colorGuide.style.color = `${selectedColor}`;
+        const makeBtn = document.getElementById('makeBtn');
+        makeBtn.style.backgroundColor = `${selectedColor}`;
+
+        // selectedColor 설정
         setColor(selectedColor);
     }
 
@@ -83,23 +101,23 @@ function Body() {
     return (
         <SignupBody>
             <form onSubmit={handleOnSubmit}>
-                <p>가족 이름 : <input type="text" name="" id="" placeholder="예) 호동이네" onChange={onChangeFamilyName}/></p>
-                <p>입장 번호 : <input type="password" name="" id="" placeholder="* 네 자리 이하 *" onChange={onChangeEntryNumber}/></p>
-                <p>입장 번호 확인 : <input type="password" name="" id="" placeholder="예) 1234" onChange={onChangeEntryNumberCheck}/></p>
-                <p>내 이름 :  <input type="text" name="" id="" placeholder="이름을 적어주세요"  onChange={onChangeName}/></p>
+                <p>가족 이름 : <input type="text" name="" id="familyNameInput" placeholder="예) 호동이네" onChange={onChangeFamilyName}/></p>
+                <p>입장 번호 : <input type="password" name="" id="entryNumberInput" placeholder="* 네 자리 이하 *" onChange={onChangeEntryNumber}/></p>
+                <p>입장 번호 확인 : <input type="password" name="" id="entryNumberCheckInput" placeholder="예) 1234" onChange={onChangeEntryNumberCheck}/></p>
+                <p>내 이름 :  <input type="text" name="" id="nameInput" placeholder="이름을 적어주세요"  onChange={onChangeName}/></p>
                 <div>
-                    <p>내 사진 <span>(필수는 아니예요)</span></p> 
+                    <p id="imageGuide">내 사진 <span>(필수는 아니예요)</span></p> 
                     <input 
                     id="uploadFile" 
                     type="file" 
                     src="" 
                     alt=""
                     onChange={handleOnChangePhoto} />
-                    <label htmlFor="uploadFile">사진올리기 <span>(클릭)</span></label>
+                    <label htmlFor="uploadFile" id="uploadFileLabel">사진올리기 <span>(클릭)</span></label>
                     <div id="photoBox"></div>
                 </div>
                 <div>
-                   <p>컬러 <span>(가족을 대표하는 색이 될거예요)</span></p>
+                   <p id="colorGuide">컬러 <span>(가족을 대표하는 색이 될거예요)</span></p>
                    <div>
                         <div>
                             <input type="radio" name="color" id="#3CAEFF" />
