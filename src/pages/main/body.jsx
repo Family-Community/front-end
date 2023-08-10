@@ -55,9 +55,10 @@ function Body() {
             <MainBox>
                 <img src={profile} />
                 <p>이름</p>
-                <p>삭제</p>
-                <p>수정</p>
-                <img src={photoex} />
+                <p>삭제</p> 
+                <p>|</p> 
+                <p>수정</p> 
+                <img src={photoex} /> 
                 <p>제목</p>
                 <p>내용</p>
                 <p>😄</p>

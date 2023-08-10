@@ -67,34 +67,35 @@ export const MyPageBox = styled.div`
 
     p:nth-child(4){
         margin: 0;
-        padding-right: 6px;
+        font-size: 80%;
+        line-height: 2.5;
+        display: inline-block;
+        width: 2%;
+        text-align: center;
+        float: right;
+    }
+
+    p:nth-child(5){
+        margin: 0;
         font-size: 80%;
         line-height: 2.5;
         display: inline-block;
         width: 8%;
         text-align: center;
         float: right;
+        padding-right: 0;
     }
 
-    img:nth-child(5) {
+    img:nth-child(6) {
         width: 100%;
         height: 100%;
         object-fit: cover;
         padding-top: 10px;
     }
 
-    p:nth-child(6){
-        margin: 0;
-        font-size: 110%;
-        line-height: 2.5;
-        display: block;
-        width: 80%;
-        text-align: left;
-    }
-
     p:nth-child(7){
         margin: 0;
-        font-size: 90%;
+        font-size: 110%;
         line-height: 2.5;
         display: block;
         width: 80%;
@@ -103,12 +104,11 @@ export const MyPageBox = styled.div`
 
     p:nth-child(8){
         margin: 0;
-        font-size: 110%;
+        font-size: 90%;
         line-height: 2.5;
-        display: inline-block;
-        width: 14%;
-        text-align: center;
-        padding-left: 10px;
+        display: block;
+        width: 80%;
+        text-align: left;
     }
 
     p:nth-child(9){
@@ -116,7 +116,7 @@ export const MyPageBox = styled.div`
         font-size: 110%;
         line-height: 2.5;
         display: inline-block;
-        width: 13%;
+        width: 14%;
         text-align: center;
         padding-left: 10px;
     }
@@ -152,6 +152,16 @@ export const MyPageBox = styled.div`
     }
 
     p:nth-child(13){
+        margin: 0;
+        font-size: 110%;
+        line-height: 2.5;
+        display: inline-block;
+        width: 13%;
+        text-align: center;
+        padding-left: 10px;
+    }
+
+    p:nth-child(14){
         margin: 0;
         font-size: 110%;
         line-height: 2.5;

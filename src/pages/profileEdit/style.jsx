@@ -86,7 +86,7 @@ export const EditBox = styled.div`
             background-color: #FA8C8C;
             text-align: center;
             color: #fff;
-            border-radius: 40px;
+            border-radius: 10px;
             line-height: 2;
             margin-top: 30px;
             margin-bottom: 20px;

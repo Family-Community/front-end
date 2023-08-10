@@ -25,6 +25,7 @@ function Body() {
                 <img src={profile} />
                 <p>이름</p>
                 <p>삭제</p>
+                <p>|</p> 
                 <p>수정</p>
                 <img src={photoex} />
                 <p>제목</p>
