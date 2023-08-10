@@ -75,12 +75,10 @@ function Body() {
     if(familyName && entryNumber && entryNumberCheck && name && color){
         const makeBtn = document.getElementById('makeBtn');
         makeBtn.style.color = `#fff`;
-        makeBtn.innerText = `안방 만들기`;
     }
     else if ((familyName || entryNumber || entryNumberCheck || name || color) || (familyName && entryNumber && entryNumberCheck&& name && color)){
         const makeBtn = document.getElementById('makeBtn');
         makeBtn.style.color = `red`;
-        makeBtn.innerText = `정보가 부족해요`;
     }
     return (
         <SignupBody>
@@ -121,7 +119,7 @@ function Body() {
                         </div>
                    </div>
                 </div>
-                <button type="submit" id="makeBtn">정보가 부족해요</button>
+                <button type="submit" id="makeBtn">안방 만들기</button>
             </form>
         </SignupBody>
     )

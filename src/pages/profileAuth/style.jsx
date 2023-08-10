@@ -26,7 +26,6 @@ export const ProfileAuthBody = styled.div`
                 text-align: center;
                 line-height: 2;
                 font-size: 110%;
-                border: 2px solid #aaaaaa;
                 box-sizing: border-box;
                 border-radius: 10px;
             }
@@ -34,7 +33,6 @@ export const ProfileAuthBody = styled.div`
         button{
             border: none;
             color: red;
-            background-color: #aaaaaa;
             display: block;
             width: 30%;
             line-height: 2.5;
