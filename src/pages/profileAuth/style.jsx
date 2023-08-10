@@ -14,7 +14,7 @@ export const ProfileAuthBody = styled.div`
             line-height: 2;
         }
         p:nth-child(1){
-            
+            font-size: 150%;
         }
         p:nth-child(2){
 
@@ -26,19 +26,21 @@ export const ProfileAuthBody = styled.div`
                 text-align: center;
                 line-height: 2;
                 font-size: 110%;
+                box-sizing: border-box;
+                border-radius: 10px;
             }
         }
         button{
             border: none;
-            color: #fff;
-            background-color: #aaaaaa;
+            color: red;
             display: block;
             width: 30%;
             line-height: 2.5;
             border-radius: 10px;
-            font-size: 110%;
+            font-size: 120%;
             margin: 0 auto;
             margin-top: 30px;
+            transition: all 0.5s;
         }
     }
 `

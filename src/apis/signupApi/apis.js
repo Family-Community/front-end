@@ -12,16 +12,17 @@ const serverApiMember = axios.create({
     },
 });
 
-export const createFamily = async (navigate, family_name, color, entry_number, name, selectedImage) => {
-    await serverApi.post(`https://port-0-back-end-eu1k2llkz11als.sel4.cloudtype.app/group/createfamily/`, {'family_name':family_name, 'color':color, 'entry_number':entry_number}).then((response)=>{
-        const group_pk = response.data.id;
-        createMember(navigate, family_name, group_pk, name, selectedImage);
+export const createFamily = async (navigate, familyName, color, entryNumber, name, selectedImage) => {
+    await serverApi.post(`https://port-0-back-end-eu1k2llkz11als.sel4.cloudtype.app/group/createfamily/`, {'family_name':familyName, 'color':color, 'entry_number':entryNumber}).then((response)=>{
+        const id = response.data.id;
+        const familyCode = response.data.family_code;
+        createFirstMember(navigate, familyName, id, name, selectedImage, familyCode);
     })
 }
 
-export const createMember = async (navigate, family_name, group_pk, name, selectedImage) => {
-    await serverApiMember.post(`https://port-0-back-end-eu1k2llkz11als.sel4.cloudtype.app/group/${group_pk}/profile/create/`, {'name':name, 'image':selectedImage}).then((response)=>{  
-        alert(`${family_name} 안방으로 초대합니다.`);
-        navigate(`/family_code/profileAuth`);
+export const createFirstMember = async (navigate, familyName, id, name, selectedImage, familyCode) => {
+    await serverApiMember.post(`https://port-0-back-end-eu1k2llkz11als.sel4.cloudtype.app/group/${id}/profile/create/`, {'name':name, 'image':selectedImage}).then((response)=>{  
+        alert(`${familyName} 안방으로 초대합니다`);
+        navigate(`/${familyCode}/profileAuth`);
     })
 }
