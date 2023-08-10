@@ -16,13 +16,14 @@ export const ProfileBody = styled.div`
             margin: 10px 0px;
             p{  
                 display: block;
-                height: 75px;
+                height: 90px;
                 width: 65%;
                 margin-bottom: 5px;
-                border: 1px solid #000;
-                box-sizing: border-box;
-                border-radius: 20px;
                 margin: 0 auto;
+                border-radius: 50%;
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
             }
             span{
                 display: block;

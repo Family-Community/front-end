@@ -37,7 +37,7 @@ function Body() {
     const navigate = useNavigate();
     const handleOnSubmit = (e) => {
         e.preventDefault();
-        checkEntryNumber(navigate, familyId, entryNumber, familyCode, familyName);
+        checkEntryNumber(navigate, familyId, entryNumber, familyCode, familyName, color);
     }
 
     // 버튼 활성화 구현
@@ -59,7 +59,7 @@ function Body() {
     return (
         <ProfileAuthBody>
             <form onSubmit={handleOnSubmit}>
-                <p id="familyNameBox">호동이네 안방</p>
+                <p id="familyNameBox"></p>
                 <p>입장번호를 입력해주세요</p>
                 <p><input type="password" name="" id="entryNumberInput" placeholder="* 네 자리 이하 *" onChange={(onChangeEntryNumber)}/></p>
                 <button type="submit" id="entryBtn">입장하기</button>

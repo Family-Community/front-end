@@ -18,12 +18,12 @@ export const getFamilyInfo = async (familyCode) => {
     return [familyId, familyName, color];
 }
 
-export const checkEntryNumber = async (navigate, familyId, entryNumber, familyCode, familyName) => {
+export const checkEntryNumber = async (navigate, familyId, entryNumber, familyCode, familyName, color) => {
     await serverApi.get(`https://port-0-back-end-eu1k2llkz11als.sel4.cloudtype.app/group/${familyId}/enter/${entryNumber}`).then((response) => {
         const result = response.data;
         if (result){
             alert(`${familyName} 안방에 오신 것을 환영합니다`);
-            navigate(`/${familyCode}/profile`);
+            navigate(`/${familyCode}/profile`, {state: {'familyId':familyId, 'familyCode':familyCode, 'familyName':familyName, 'color':color}});
         }
         else{
             alert('입장번호가 일치하지 않아요');
