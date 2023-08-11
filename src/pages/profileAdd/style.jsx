@@ -9,6 +9,7 @@ export const ProfileAddBody = styled.div`
         p{
             margin: 0;
             text-align: center;
+            font-weight: 700;
         }
         p:nth-child(1){
             font-size: 110%;
@@ -16,6 +17,8 @@ export const ProfileAddBody = styled.div`
                 font-size: 100%;
                 width: 40%;
                 text-align: center;
+                border-radius: 5px;
+                box-sizing: border-box;
             }
         }
         p:nth-child(2){
@@ -46,7 +49,7 @@ export const ProfileAddBody = styled.div`
             font-size: 110%;
             background-color: #aaaaaa;
             text-align: center;
-            color: #fff;
+            color: red;
             border-radius: 10px;
             line-height: 2;
             margin-top: 20px;
@@ -58,7 +61,7 @@ export const ProfileAddBody = styled.div`
             font-size: 110%;
             background-color: #aaaaaa;
             text-align: center;
-            color: #fff;
+            color: red;
             border-radius: 10px;
             line-height: 2;
             margin-top: 20px;
