@@ -8,9 +8,8 @@ function Body() {
     // familyCode
     const familyCode = useParams().family_code;
     
-    // 외부 접근 시 profileAuth로
+    // familyInfo
     const location = useLocation();
-    const navigate = useNavigate();
     let familyId = '';
     let familyName = '';
     let color = '';
@@ -20,14 +19,22 @@ function Body() {
         color = location.state.color;
     }
     catch(err){
-        
+
     }
 
     // familyMember 가져오기
+    const navigate = useNavigate();
     const [familyMember, setFamilyMember] = useState('');
     const findFamilyMember = async () => {
-        const currFamilyMember = await getFamilyMember(familyId);
-        setFamilyMember(currFamilyMember);
+        // 정상 접근시
+        try{
+            const FamilyMember = await getFamilyMember(familyId);
+            setFamilyMember(FamilyMember);
+        }
+        // 비 정상 접근시
+        catch(e){
+            navigate(`/${familyCode}/profileAuth`);
+        }
     }
     
     // familyMember 띄우기
