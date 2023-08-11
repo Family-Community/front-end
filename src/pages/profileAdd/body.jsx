@@ -20,6 +20,26 @@ function Body() {
     }
     setFamilyInfo();
 
+    // form 내의 정보
+    const [name, onChangeName, setName] = useInput('');
+    const [image, setImage] = useState('');
+
+    // 버튼 활성화
+    const [makeBtn, setMakeBtn] = useState('');
+    const getMakeBtn = () => {
+        const makeBtn = document.getElementById('makeBtn');
+        setMakeBtn(makeBtn);
+    }
+    useEffect(()=> {
+        getMakeBtn();
+    }, [])
+    if(makeBtn && name.length > 0){
+        makeBtn.style.color = `#fff`;
+    }
+    else if(makeBtn){
+        makeBtn.style.color = `red`;
+    }
+
     // 컬러 설정
     if (familyId && color){
         const nameInput = document.getElementById('nameInput');
@@ -43,15 +63,20 @@ function Body() {
         const selectedPhoto = e.target.files[0];
         const selectedPhotoUrl = URL.createObjectURL(selectedPhoto);
         
+        // 업로드된 사진 보여주기
         const photoBox = document.getElementById(`photoBox`);
         photoBox.style.backgroundImage = `url(${selectedPhotoUrl})`;
-        photoBox.style.backgroundSize = `90%`;
+        photoBox.style.backgroundSize = `80%`;
+        photoBox.style.border = `none`;
+
+        // 사진 설정
+        setImage(selectedPhoto);
     }
 
     return (
         <ProfileAddBody>
             <form onSubmit={handleOnSubmit}>
-                <p>이름 : <input type="text" name="" id="nameInput" placeholder="이름을 적어주세요"/></p>
+                <p>이름 : <input type="text" name="" id="nameInput" placeholder="이름을 적어주세요" onChange={onChangeName}/></p>
                 <p id="imageGuide">내 사진 <span>(필수는 아니예요)</span></p>
                 <input 
                 type="file" 

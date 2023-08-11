@@ -49,7 +49,7 @@ export const ProfileAddBody = styled.div`
             font-size: 110%;
             background-color: #aaaaaa;
             text-align: center;
-            color: red;
+            color: #fff;
             border-radius: 10px;
             line-height: 2;
             margin-top: 20px;
@@ -66,6 +66,7 @@ export const ProfileAddBody = styled.div`
             line-height: 2;
             margin-top: 20px;
             border: none;
+            transition: all 0.5s;
         }
     }
 `
