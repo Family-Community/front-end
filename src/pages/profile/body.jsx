@@ -63,9 +63,26 @@ function Body() {
         navigate(`/${familyCode}/profileAdd`);
     }
 
+    // 컬러 설정
+    const [addProfileBtn, setAddProfileBtn] = useState('');
+    const [kakaoSharingBtn, setKakaoSharingBtn] = useState('');
+    const getAddProfileBtn = () => {
+        const addProfileBtn = document.getElementById('addProfileBtn');
+        const kakaoSharingBtn = document.getElementById('kakaotalk-sharing-btn');
+        setAddProfileBtn(addProfileBtn);
+        setKakaoSharingBtn(kakaoSharingBtn);
+    }
+    if(addProfileBtn && kakaoSharingBtn){
+        addProfileBtn.style.border = `2px solid ${color}`;
+        kakaoSharingBtn.style.border = `2px solid ${color}`;
+    }
+
     useEffect(() => {
         // 멤버 불러오기
         findFamilyMember();
+
+        // addProfileBtn 가져오기
+        getAddProfileBtn();
 
         // 카카오톡 sdk 추가
         const script = document.createElement("script");
