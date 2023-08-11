@@ -46,7 +46,9 @@ export const MainHeaderBox = styled.div`
         margin-right: 15px;
         margin-top: 0;
         margin-bottom: 0;
-
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
     }
 `
 
@@ -55,6 +57,18 @@ export const ProfileLink = styled(Link)`
     width: 25px;
     height: 25px;
     margin-right: 15px;
+    p{
+        display: block;
+        width: 30px;
+        height: 30px;
+        margin-left: 0;
+        margin-right: 15px;
+        margin-top: 0;
+        margin-bottom: 0;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
 `;
 
 export const MainBox = styled.div`
