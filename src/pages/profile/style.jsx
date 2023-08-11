@@ -39,29 +39,29 @@ export const ProfileBody = styled.div`
         margin: 0 auto;
         #addProfileBtn{
             display: block;
-            height: 50px;
-            width: 50px;
+            height: 60px;
+            width: 60px;
             background-image: url(${plus});
             background-repeat: no-repeat;
             background-size: 65%;
             background-position: center;
             margin: 0 auto;
-            border: 1px solid #000;
             box-sizing: border-box;
             border-radius: 50%;
             margin-top: 20px;
         }
         #addProfileBtn::after{
-            content: "추가하기";
+            content: "멤버추가";
             display: block;
             text-align: center;
-            transform: translateY(60px);
+            transform: translateY(70px);
             font-size: 80%;
+            font-weight: 700;
         }
         #kakaotalk-sharing-btn{
             display: block;
-            height: 50px;
-            width: 50px;
+            height: 60px;
+            width: 60px;
             background-image: url(${kakao});
             background-repeat: no-repeat;
             background-size: cover;
@@ -69,13 +69,15 @@ export const ProfileBody = styled.div`
             margin: 0 auto;
             border-radius: 50%;
             margin-top: 20px;
+            box-sizing: border-box;
         }
         #kakaotalk-sharing-btn::after{
-            content: "카카오톡";
+            content: "카톡공유";
             display: block;
             text-align: center;
-            transform: translateY(60px);
+            transform: translateY(70px);
             font-size: 80%;
+            font-weight: 700;
         }
 
     }
