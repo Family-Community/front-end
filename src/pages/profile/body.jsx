@@ -2,6 +2,7 @@ import { ProfileBody } from "./style";
 import { useEffect, useState } from "react";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { getFamilyMember } from "../../apis/profileApi/apis";
+import profile from "../../assets/images/profile.svg";
 function Body() {
     
     // familyCode
@@ -41,9 +42,11 @@ function Body() {
             // 새로 추가할 프로필
             const id = familyMember[i].id;
             const name = familyMember[i].name;
-            const image = familyMember[i].image;
-            
-            // 
+            let image = familyMember[i].image;
+            if (!image){
+                image = profile;
+            }
+            // 프로필 추가하기
             profileBox.innerHTML = prev + `
                 <div>
                     <p id="${id}" style="background-image : url(${image})"></p>
