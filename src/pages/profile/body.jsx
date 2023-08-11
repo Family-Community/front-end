@@ -56,7 +56,7 @@ function Body() {
             // 프로필 추가하기
             profileBox.innerHTML = prev + `
                 <div>
-                    <p id="${id}" style="background-image : url(${image})"></p>
+                    <p class="profileImage" id="${id}" style="background-image : url(${image})"></p>
                     <span>${name}</span>
                 </div>
             `
@@ -76,15 +76,23 @@ function Body() {
     // 컬러 설정
     const [addProfileBtn, setAddProfileBtn] = useState('');
     const [kakaoSharingBtn, setKakaoSharingBtn] = useState('');
+    const [profileImage, setProfileImage] = useState('');
     const getAddProfileBtn = () => {
         const addProfileBtn = document.getElementById('addProfileBtn');
         const kakaoSharingBtn = document.getElementById('kakaotalk-sharing-btn');
+        const profileImage = document.getElementsByClassName('profileImage');
         setAddProfileBtn(addProfileBtn);
         setKakaoSharingBtn(kakaoSharingBtn);
+        setProfileImage(profileImage);
     }
-    if(addProfileBtn && kakaoSharingBtn){
+    if(addProfileBtn && kakaoSharingBtn && profileImage){
         addProfileBtn.style.border = `2px solid ${color}`;
         kakaoSharingBtn.style.border = `2px solid ${color}`;
+        const lenOfProfileImage = profileImage.length;
+        for(let i=0; i<lenOfProfileImage; i++){
+            const currProfileImage = profileImage[i];
+            currProfileImage.style.border = `2px solid ${color}`;
+        }
     }
 
     useEffect(() => {

@@ -24,6 +24,7 @@ export const ProfileBody = styled.div`
                 background-position: center;
                 background-size: cover;
                 background-repeat: no-repeat;
+                box-sizing: border-box;
             }
             span{
                 display: block;
