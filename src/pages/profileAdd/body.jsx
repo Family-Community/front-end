@@ -1,7 +1,7 @@
 import { ProfileAddBody } from "./style";
 import { useState, useEffect } from "react";
-import { getFamilyInfo } from "../../apis/profileAddApi/apis";
-import { useParams } from "react-router-dom";
+import { getFamilyInfo, createMember } from "../../apis/profileAddApi/apis";
+import { useParams, useNavigate } from "react-router-dom";
 import useInput from "../../hooks/useInput";
 function Body() {
 
@@ -10,12 +10,15 @@ function Body() {
 
     // fmailyInfo 가져오기
     const [familyId, setfamilyId] = useState('');
+    const [familyName, setFamilyName] = useState('');
     const [color, setColor] = useState('');
     const setFamilyInfo = async() => {
         const familyInfo = await getFamilyInfo(familyCode);
         const familyId = familyInfo[0];
+        const familyName = familyInfo[1];
         const color = familyInfo[2];
         setfamilyId(familyId);
+        setFamilyName(familyName);
         setColor(color);
     }
     setFamilyInfo();
@@ -53,9 +56,10 @@ function Body() {
     }
 
     // 만들기 버튼 누를 시
+    const navigate = useNavigate();
     const handleOnSubmit = (e) => {
         e.preventDefault();
-        console.log('만들기');
+        createMember(navigate, familyId, name, image, familyName, familyCode);
     }
 
     // 사진 업로드 시
