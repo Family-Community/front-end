@@ -67,6 +67,18 @@ function Body() {
         setProfiles(numberOfFamilyNumber);
     }
     
+    // 프로필 버튼 누를 시
+    const handleOnClickProfile = (e) => {
+        e.preventDefault();
+        const memberId = e.target.id;
+        if ( memberId === 'profileBox'){
+            // 무시
+        }
+        else {
+            navigate(`/${familyCode}`, {state: {'familyId':familyId, 'memberId':memberId}});
+        }
+    }
+
     // 추가하기 버튼 누를 시
     const handleClickAddProfile = (e) => {
         e.preventDefault();
@@ -154,7 +166,7 @@ function Body() {
 
     return (
         <ProfileBody>
-            <div id="profileBox">
+            <div id="profileBox" onClick={handleOnClickProfile}>
             </div>
 
             <div>
