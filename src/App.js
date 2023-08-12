@@ -13,10 +13,10 @@ function App() {
       <Routes>
         <Route path={`/`} element={<Signup />}></Route>
         <Route path={`/:familyCode`} element={<Main />}></Route>
-        <Route path={`/mypage`} element={<Mypage />}></Route>
+        <Route path={`/:familyCode/:memberId`} element={<Mypage />}></Route>
         <Route path={`/:family_code/profile`} element={<Profile />}></Route>
         <Route path={`/:family_code/profileAdd`} element={<ProfileAdd />}></Route>
-        <Route path={`/profileEdit`} element={<ProfileEdit />}></Route>
+        <Route path={`/:familyCode/:memberId/profileEdit`} element={<ProfileEdit />}></Route>
         <Route path={`/:family_code/profileAuth`} element={<ProfileAuth />}></Route>
         <Route path={`/:familyCode/posting`} element={<Posting />}></Route>
       </Routes>

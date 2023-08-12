@@ -82,7 +82,7 @@ function Body() {
                     placeholder="게시물 검색"
                 />
                 <img src={glasses} />
-                <ProfileLink to="../mypage">
+                <ProfileLink to={`/${familyCode}/${memberId}`}>
                     <p id="profileImg"></p>
                 </ProfileLink>
             </MainHeaderBox>
