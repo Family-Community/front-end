@@ -5,8 +5,15 @@ import { MyPageBox, MainLink } from "./style";
 import profile from '../../assets/images/profile.svg';
 import photoex from '../../assets/images/photoex.png';
 import house from '../../assets/images/house-solid.svg';
+import { useNavigate } from "react-router-dom";
 
 function Body() {
+
+    // 프로필 수정 버튼 눌렀을 때
+    const navigate = useNavigate();
+    const handleOnClickProfileEdit = () => {
+        navigate(`/profileEdit`);
+    }
 
     function MypageHeader() {
         return (
@@ -38,7 +45,7 @@ function Body() {
                 <p>✔</p>
             </MyPageBox>
             <ButtonContainer>
-                <button type="submit">내 정보 수정</button>
+                <button type="submit" onClick={handleOnClickProfileEdit}>내 정보 수정</button>
             </ButtonContainer>
         </div>
 
