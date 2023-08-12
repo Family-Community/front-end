@@ -6,7 +6,7 @@ import Profile from "./pages/profile";
 import ProfileAdd from "./pages/profileAdd";
 import ProfileEdit from "./pages/profileEdit";
 import ProfileAuth from "./pages/profileAuth";
-import Post from "./pages/post";
+import Posting from "./pages/posting";
 function App() {
   return (
     <Router>
@@ -18,7 +18,7 @@ function App() {
         <Route path={`/:family_code/profileAdd`} element={<ProfileAdd />}></Route>
         <Route path={`/profileEdit`} element={<ProfileEdit />}></Route>
         <Route path={`/:family_code/profileAuth`} element={<ProfileAuth />}></Route>
-        <Route path={`/:family_code/post`} element={<Post />}></Route>
+        <Route path={`/:familyCode/posting`} element={<Posting />}></Route>
       </Routes>
     </Router>
   );

@@ -2,7 +2,7 @@ import Body from "./body";
 import Header from "../../style/global/header";
 import Footer from "../../style/global/footer";
 import Wrapper from "../../style/wrapper";
-function Post() {
+function Posting() {
     return (
         <Wrapper>
             <Header></Header>
@@ -12,4 +12,4 @@ function Post() {
     )
 }
 
-export default Post;
+export default Posting;
