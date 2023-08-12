@@ -59,7 +59,12 @@ function Body() {
     const navigate = useNavigate();
     const handleOnSubmit = (e) => {
         e.preventDefault();
-        createMember(navigate, familyId, name, image, familyName, familyCode);
+        if(!name){
+            alert('이름을 입력해주세요');
+        }
+        else{
+            createMember(navigate, familyId, name, image, familyName, familyCode);
+        }
     }
 
     // 사진 업로드 시
