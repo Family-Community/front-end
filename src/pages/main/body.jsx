@@ -91,7 +91,7 @@ function Body() {
     }
     // 글쓰기 버튼 누를 시
     const handleOnClickPosting = () => {
-        navigate(`/${familyCode}/posting`);
+        navigate(`/${familyCode}/posting`, {state: {'memberId':memberId, 'familyId':familyId}});
     }
     return (
         <div>
