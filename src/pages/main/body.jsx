@@ -89,6 +89,10 @@ function Body() {
 
         )
     }
+    // 글쓰기 버튼 누를 시
+    const handleOnClickPosting = () => {
+        navigate(`/${familyCode}/posting`);
+    }
     return (
         <div>
             <MainHeader />
@@ -109,7 +113,7 @@ function Body() {
                 <p>✔</p>
             </MainBox>
             <ButtonContainer>
-                <button type="submit">글쓰기</button>
+                <button onClick={handleOnClickPosting}>글쓰기</button>
             </ButtonContainer>
         </div>
 
