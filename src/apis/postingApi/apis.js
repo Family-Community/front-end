@@ -29,7 +29,7 @@ export const posting = async (navigate, familyCode, familyId, memberId, title, c
       // 성공 시
       if(response.request.status === 201){
         alert('게시물 작성에 성공하였습니다');
-        navigate(`/${familyCode}`)
+        navigate(`/${familyCode}`, {state: {'familyId':familyId, 'memberId':memberId}});
       }
       // 실패 시
       else{
