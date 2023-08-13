@@ -42,7 +42,6 @@ export const changeMemberInfo = async (navigate, familyCode, memberId, newName, 
 
 export const deleteFamily = async(navigate, familyId, familyName) => {
     await serverApi.delete(`https://port-0-back-end-eu1k2llkz11als.sel4.cloudtype.app/group/${familyId}/delete`).then((response)=>{
-        console.log(response);
         alert(`${familyName}이 완전히 삭제되었습니다 감사합니다`);
         navigate(`/`);
     })
