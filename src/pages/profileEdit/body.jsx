@@ -82,9 +82,11 @@ function Body() {
         if (!newName){
             alert('이름을 입력해주세요');
         }
+        else if(newName.length > 10){
+            alert('10자 이내의 이름으로 설정해 주세요');
+        }
         else{
-            console.log(newName, newPhoto);
-            changeMemberInfo(navigate, memberId, newName, newPhoto);
+            changeMemberInfo(navigate, familyCode, memberId, newName, newPhoto);
         }
     }
 

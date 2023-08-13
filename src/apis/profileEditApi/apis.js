@@ -34,9 +34,9 @@ export const getFamilyInfo = async (familyCode) => {
     return [familyId, color, familyName];
 };
 
-export const changeMemberInfo = async (navigate, memberId, newName, newPhoto) => {
+export const changeMemberInfo = async (navigate, familyCode, memberId, newName, newPhoto) => {
     await serverApiImage.put(`https://port-0-back-end-eu1k2llkz11als.sel4.cloudtype.app/group/profile/${memberId}/update/`, {'name':newName, 'image':newPhoto}).then((response)=>{
-        console.log(response);
+        navigate(`/${familyCode}/profileAuth`);
     })
 };
 
