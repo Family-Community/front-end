@@ -2,7 +2,7 @@ import { ProfileEditBody } from "./style";
 import { useParams, useNavigate } from "react-router-dom";
 import useInput from "../../hooks/useInput";
 import { useEffect, useState } from "react";
-import { getMemberInfo, getFamilyInfo, changeMemberInfo } from "../../apis/profileEditApi/apis";
+import { getMemberInfo, getFamilyInfo, changeMemberInfo, deleteFamily } from "../../apis/profileEditApi/apis";
 import profile from "../../assets/images/profile.svg";
 
 function Body() {
@@ -122,11 +122,22 @@ function Body() {
         }
     }
 
+    // 가족 삭제 구현
+    const handleOnClickDeleteFamily = () => {
+        const finalCheck = prompt(`가족을 삭제하면 복구가 불가능해요 그럼에도 삭제하시겠다면 '${familyName}'을/를 적어주세요`);
+        if(finalCheck === familyName){
+            deleteFamily(navigate, familyId, familyName);
+        }
+        else{
+            alert('가족 삭제를 취소하셨습니다');
+        }
+    }
+
     return (
         <ProfileEditBody>
             <div>
                 <p>
-                    <span id="familyNameSpan">민석이네 </span>안방의 <span id="nameSpan">양민석</span>님
+                    <span id="familyNameSpan"></span>안방의 <span id="nameSpan"></span>님
                 </p>
                 <p id="prevPhotoBox"></p>
             </div>
@@ -143,7 +154,7 @@ function Body() {
                 <label htmlFor="uploadFile" id="uploadFileLabel">사진 올리기</label>
                 <button type="submit" id="changeBtn">바꾸기</button>
             </form>
-            <p>가족 삭제</p>
+            <p onClick={handleOnClickDeleteFamily}>가족 삭제</p>
         </ProfileEditBody>
     )
 }
