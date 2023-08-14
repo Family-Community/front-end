@@ -165,12 +165,12 @@ export const MainBox = styled.div`
 
     p:nth-child(10){
         margin: 0;
-        font-size: 110%;
+        font-size: 80%;
         line-height: 2.5;
         display: inline-block;
         width: 13%;
         text-align: center;
-        padding-left: 10px;
+        padding-left: 5px;
     }
 
     p:nth-child(11){
@@ -185,12 +185,12 @@ export const MainBox = styled.div`
 
     p:nth-child(12){
         margin: 0;
-        font-size: 110%;
+        font-size: 80%;
         line-height: 2.5;
         display: inline-block;
         width: 13%;
         text-align: center;
-        padding-left: 10px;
+        padding-left: 5px;
     }
 
     p:nth-child(13){
@@ -205,12 +205,66 @@ export const MainBox = styled.div`
 
     p:nth-child(14){
         margin: 0;
+        font-size: 80%;
+        line-height: 2.5;
+        display: inline-block;
+        width: 13%;
+        text-align: center;
+        padding-left: 5px;
+    }
+    p:nth-child(15){
+        margin: 0;
         font-size: 110%;
         line-height: 2.5;
         display: inline-block;
         width: 13%;
         text-align: center;
         padding-left: 10px;
+    }
+    p:nth-child(16){
+        margin: 0;
+        font-size: 80%;
+        line-height: 2.5;
+        display: inline-block;
+        width: 13%;
+        text-align: center;
+        padding-left: 5px;
+    }
+    p:nth-child(17){
+        margin: 0;
+        font-size: 110%;
+        line-height: 2.5;
+        display: inline-block;
+        width: 13%;
+        text-align: center;
+        padding-left: 10px;
+    }
+    p:nth-child(18){
+        margin: 0;
+        font-size: 80%;
+        line-height: 2.5;
+        display: inline-block;
+        width: 13%;
+        text-align: center;
+        padding-left: 5px;
+    }
+    p:nth-child(19){
+        margin: 0;
+        font-size: 110%;
+        line-height: 2.5;
+        display: inline-block;
+        width: 13%;
+        text-align: center;
+        padding-left: 10px;
+    }
+    p:nth-child(20){
+        margin: 0;
+        font-size: 80%;
+        line-height: 2.5;
+        display: inline-block;
+        width: 13%;
+        text-align: center;
+        padding-left: 5px;
     }
 `
 

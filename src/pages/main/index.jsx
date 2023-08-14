@@ -1,4 +1,4 @@
-import Body from "./body2";
+import Body from "./body";
 // import Header from "../../style/global/header";
 import Footer from "../../style/global/footer";
 import Wrapper from "../../style/wrapper";
