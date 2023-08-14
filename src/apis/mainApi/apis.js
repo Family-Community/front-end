@@ -26,13 +26,20 @@ export const getPostInfo = async(familyId) => {
     return post;
 }
 
-export const reaction = async(familyId) => {
-
-    await serverApi.get(`https://port-0-back-end-eu1k2llkz11als.sel4.cloudtype.app/contents/${familyId}/`).then((response)=> {
-
+export const getSearchInfo = async(familyId, searchContent) => {
+    let post = [];
+    await serverApi.get(`https://port-0-back-end-eu1k2llkz11als.sel4.cloudtype.app/contents/${familyId}/${searchContent}`).then((response)=> {
+        post = response.data.post;
     })
-
+    return post;
 }
 
+// export const reaction = async(familyId, memberId, postId, reactionNum) => {
+
+//     await serverApi.post(`https://port-0-back-end-eu1k2llkz11als.sel4.cloudtype.app/contents/${familyId}/${memberId}/${postId}/reaction/${reactionNum}`).then((response)=> {
+
+//     })
+
+// }
 
 

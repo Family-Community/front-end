@@ -5,7 +5,7 @@ import { MainBox } from "./style"
 import glasses from '../../assets/images/magnifying-glass-solid.svg';
 import profile from '../../assets/images/profile.svg';
 import photoex from '../../assets/images/photoex.png';
-import { getMemberInfo, getPostInfo } from "../../apis/mainApi/apis";
+import { getMemberInfo, getPostInfo, getSearchInfo } from "../../apis/mainApi/apis";
 import useInput from "../../hooks/useInput";
 
 function Body() {
@@ -106,7 +106,6 @@ function Body() {
     }
     //post 띄우기
     const setFeeds = (numberOfPostNumber) => {
-        // console.log("post state:", post);
         const feedBox = document.getElementById('feedBox');
         if (feedBox) {
             // 초기화
@@ -117,7 +116,7 @@ function Body() {
 
                 // 새로 추가될 피드
                 const postId = post[i].id;
-                let image = post[i].member.image;
+                const image = post[i].member.image;
                 const name = post[i].member.name;
                 const photo = post[i].photo;
                 if (!image) {
@@ -138,7 +137,7 @@ function Body() {
                 // 게시물 렌더링
                 feedBox.innerHTML = prev + `
                 <div>
-                    <img id="memberProfile" />
+                    <img src=${image}/>
                     <p>${name}</p>
                     <p>삭제</p> 
                     <p>|</p> 
@@ -179,20 +178,27 @@ function Body() {
     useEffect(() => {
         // post 불러오기
         findPostInfo();
-        // //feedBox 찾기
-        // const feedBox = document.getElementById('feedBox');
-        // if (feedBox) {
-        //     const numberOfPostNumber = post.length;
-        //     setFeeds(numberOfPostNumber);
-        //     console.log()
-        // }
     }, []);
+
+    // 검색 내용
+    // const [searchContent, onChangeSearchContent, setSearchContent] = useInput('');
+    
+    // useEffect(() => {
+    //     if (searchContent) {
+    //       const searchInfo = getSearchInfo(familyId, searchContent);
+    //       console.log(searchContent);
+    //       setPost(searchInfo);
+    //     }
+    //   }, [searchContent]);
+    
 
     // 검색 내용
     const [searchContent, onChangeSearchContent, setSearchContent] = useInput('');
     if(searchContent){
         // searchContent를 넣은 api를 통해 post(리스트 형태)로 반환;
-        
+        const searchInfo = getSearchInfo(familyId, searchContent);
+        console.log(searchContent);
+        setPost(searchInfo);        
     }
 
 
@@ -206,22 +212,13 @@ function Body() {
     return (
         <div>
             <MainHeader />
+            <input
+                type="text"
+                placeholder="게시물 검색"
+                onChange={onChangeSearchContent}
+            />
             <MainBox>
                 <div id="feedBox" onClick={handleOnClick}>
-                    {/* <p id="memberProfile"></p>
-                    <p>이름</p>
-                    <p>삭제</p>
-                    <p>|</p>
-                    <p>수정</p>
-                    <img src={photoex} />
-                    <p>제목</p>
-                    <p>내용</p>
-                    <p>😄</p>
-                    <p>👍</p>
-                    <p>😥</p>
-                    <p>💗</p>
-                    <p>😧</p>
-                    <p>✔</p> */}
                 </div>
             </MainBox>
             <ButtonContainer>
