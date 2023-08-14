@@ -62,6 +62,9 @@ function Body() {
         if(!name){
             alert('이름을 입력해주세요');
         }
+        else if (name.length > 10){
+            alert('10자 이내의 이름으로 설정해주세요');
+        }
         else{
             createMember(navigate, familyId, name, image, familyName, familyCode);
         }
