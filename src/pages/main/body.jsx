@@ -101,10 +101,10 @@ function Body() {
             console.log(postInfo[0]);
         } catch (err) {
             //비정상 접근 시
-            navigate(`/${familyCode}/profileAuth`);
+            // navigate(`/${familyCode}/profileAuth`);
+            console.log(err);
         }
     }
-
     //post 띄우기
     const setFeeds = (numberOfPostNumber) => {
         // console.log("post state:", post);
@@ -166,7 +166,7 @@ function Body() {
         }
 
     }
-    if (post) {
+    if (post.length >=1) {
         const numberOfPostNumber = post.length;
         setFeeds(numberOfPostNumber);
     }
