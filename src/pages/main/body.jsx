@@ -192,13 +192,14 @@ function Body() {
     //   }, [searchContent]);
     
 
-    // 검색 내용
+    // 검색 구현
     const [searchContent, onChangeSearchContent, setSearchContent] = useInput('');
+    const findSearchInfo = async() => {
+        const post = await getSearchInfo(familyId, searchContent);
+        setPost(post);
+    }
     if(searchContent){
-        // searchContent를 넣은 api를 통해 post(리스트 형태)로 반환;
-        const searchInfo = getSearchInfo(familyId, searchContent);
-        console.log(searchContent);
-        setPost(searchInfo);        
+        findSearchInfo();
     }
 
 
