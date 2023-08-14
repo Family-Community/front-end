@@ -21,10 +21,17 @@ export const getMemberInfo = async(familyId, memberId) => {
 export const getPostInfo = async(familyId) => {
     let post = [];
     await serverApi.get(`https://port-0-back-end-eu1k2llkz11als.sel4.cloudtype.app/contents/${familyId}/`).then((response)=> {
-        console.log(response)
         post = response.data.post;
     })
     return post;
+}
+
+export const reaction = async(familyId) => {
+
+    await serverApi.get(`https://port-0-back-end-eu1k2llkz11als.sel4.cloudtype.app/contents/${familyId}/`).then((response)=> {
+
+    })
+
 }
 
 

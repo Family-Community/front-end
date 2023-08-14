@@ -6,6 +6,8 @@ import glasses from '../../assets/images/magnifying-glass-solid.svg';
 import profile from '../../assets/images/profile.svg';
 import photoex from '../../assets/images/photoex.png';
 import { getMemberInfo, getPostInfo } from "../../apis/mainApi/apis";
+import useInput from "../../hooks/useInput";
+
 function Body() {
     // familyCode
     const familyCode = useParams().familyCode;
@@ -96,9 +98,6 @@ function Body() {
         try {
             const postInfo = await getPostInfo(familyId);
             setPost(postInfo);
-            // post가 업데이트된 이후에 setFeeds 호출
-            setFeeds(postInfo.length);
-            console.log(postInfo[0]);
         } catch (err) {
             //비정상 접근 시
             // navigate(`/${familyCode}/profileAuth`);
@@ -147,7 +146,7 @@ function Body() {
                     <img src=${photo} /> 
                     <p>${title}</p>
                     <p>${content}</p>
-                    <p>😄</p>
+                    <p id="clickSmile${postId}">😄</p>
                     <p>${smileCnt}</p>
                     <p>👍</p>
                     <p>${goodCnt}</p>
@@ -166,7 +165,8 @@ function Body() {
         }
 
     }
-    if (post.length >=1) {
+    // post에 뭔가가 들어 있으면
+    if (post) {
         const numberOfPostNumber = post.length;
         setFeeds(numberOfPostNumber);
     }
@@ -187,11 +187,27 @@ function Body() {
         //     console.log()
         // }
     }, []);
+
+    // 검색 내용
+    const [searchContent, onChangeSearchContent, setSearchContent] = useInput('');
+    if(searchContent){
+        // searchContent를 넣은 api를 통해 post(리스트 형태)로 반환;
+        
+    }
+
+
+    // 리액션 구현
+    const handleOnClick = (e) => {
+        e.preventDefault();
+        const order = e.target.id;
+        // clickSmile을 클릭했을 때
+        console.log(order);
+    }
     return (
         <div>
             <MainHeader />
             <MainBox>
-                <div id="feedBox">
+                <div id="feedBox" onClick={handleOnClick}>
                     {/* <p id="memberProfile"></p>
                     <p>이름</p>
                     <p>삭제</p>
@@ -207,7 +223,6 @@ function Body() {
                     <p>😧</p>
                     <p>✔</p> */}
                 </div>
-
             </MainBox>
             <ButtonContainer>
                 <button onClick={handleOnClickPosting}>글쓰기</button>
