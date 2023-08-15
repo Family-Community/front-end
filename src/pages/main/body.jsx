@@ -5,7 +5,7 @@ import { MainBox } from "./style"
 import glasses from '../../assets/images/magnifying-glass-solid.svg';
 import profile from '../../assets/images/profile.svg';
 import photoex from '../../assets/images/photoex.png';
-import { getMemberInfo, getPostInfo, getSearchInfo } from "../../apis/mainApi/apis";
+import { getMemberInfo, getPostInfo, getSearchInfo, reaction } from "../../apis/mainApi/apis";
 import useInput from "../../hooks/useInput";
 
 function Body() {
@@ -53,27 +53,6 @@ function Body() {
         const handleOnClick = (e) => {
             console.log('logo click event');
         }
-        // // 검색 기능
-        // const Search = () => {
-
-        //     return (
-        //             <input
-        //                 type="text"
-        //                 placeholder="제목,작성자,내용 검색하기"
-        //             />
-
-        //     );
-
-        // };
-
-        // //프로필
-        // const Profile = () => {
-        //     return(
-        //         <Link to="../mypage">
-        //             <img src={profile} />
-        //         </Link>
-        //     )
-        // }
 
         return (
             <MainHeaderBox>
@@ -104,8 +83,9 @@ function Body() {
             console.log(err);
         }
     }
+
     //post 띄우기
-    const setFeeds = (numberOfPostNumber) => {
+    const setFeeds = async (numberOfPostNumber) => {
         const feedBox = document.getElementById('feedBox');
         if (feedBox) {
             // 초기화
@@ -132,8 +112,6 @@ function Body() {
                 const worryCnt = post[i].worry_cnt;
                 const checkCnt = post[i].check_cnt;
 
-                //반응
-
                 // 게시물 렌더링
                 feedBox.innerHTML = prev + `
                 <div>
@@ -146,19 +124,20 @@ function Body() {
                     <p>${title}</p>
                     <p>${content}</p>
                     <p id="clickSmile${postId}">😄</p>
-                    <p>${smileCnt}</p>
-                    <p>👍</p>
-                    <p>${goodCnt}</p>
-                    <p>😥</p>
-                    <p>${sadCnt}</p>
-                    <p>💗</p>
-                    <p>${heartCnt}</p>
-                    <p>😧</p>
-                    <p>${worryCnt}</p>
-                    <p>✔</p>
-                    <p>${checkCnt}</p>    
+                    <p id="clickSmileCnt">${smileCnt}</p>
+                    <p id="clickGood${postId}">👍</p>
+                    <p id="clickGoodCnt">${goodCnt}</p>
+                    <p id="clickSad${postId}">😥</p>
+                    <p id="clickSadCnt">${sadCnt}</p>
+                    <p id="clickHeart${postId}">💗</p>
+                    <p id="clickHeartCnt">${heartCnt}</p>
+                    <p id="clickWorry${postId}">😧</p>
+                    <p id="clickWorryCnt">${worryCnt}</p>
+                    <p id="clickCheck${postId}">✔</p>
+                    <p id="clickCheckCnt">${checkCnt}</p>    
                 </div>
-            `
+            `;
+
             }
 
         }
@@ -180,36 +159,79 @@ function Body() {
         findPostInfo();
     }, []);
 
-    // 검색 내용
-    // const [searchContent, onChangeSearchContent, setSearchContent] = useInput('');
-    
-    // useEffect(() => {
-    //     if (searchContent) {
-    //       const searchInfo = getSearchInfo(familyId, searchContent);
-    //       console.log(searchContent);
-    //       setPost(searchInfo);
-    //     }
-    //   }, [searchContent]);
-    
-
     // 검색 구현
     const [searchContent, onChangeSearchContent, setSearchContent] = useInput('');
-    const findSearchInfo = async() => {
+    const findSearchInfo = async () => {
         const post = await getSearchInfo(familyId, searchContent);
         setPost(post);
     }
-    if(searchContent){
+    if (searchContent) {
         findSearchInfo();
     }
 
+    //리액션 업데이트할 state 선언
+    const [updatedSmileCnt, setUpdatedSmileCnt] = useState(0);
+    const [updatedGoodCnt, setUpdatedGoodCnt] = useState(0);
+    const [updatedSadCnt, setUpdatedSadCnt] = useState(0);
+    const [updatedHeartCnt, setUpdatedHeartCnt] = useState(0);
+    const [updatedWorryCnt, setUpdatedWorryCnt] = useState(0);
+    const [updatedCheckCnt, setUpdatedCheckCnt] = useState(0);
+
+    useEffect(() => {
+        const clickSmileCnt = document.getElementById('clickSmileCnt');
+        const clickGoodCnt = document.getElementById('clickGoodCnt');
+        const clickSadCnt = document.getElementById('clickSadCnt');
+        const clickHeartCnt = document.getElementById('clickHeartCnt');
+        const clickWorryCnt = document.getElementById('clickWorryCnt');
+        const clickCheckCnt = document.getElementById('clickCheckCnt');
+    
+        if (clickSmileCnt && clickGoodCnt && clickSadCnt && clickHeartCnt && clickWorryCnt && clickCheckCnt) {
+            setUpdatedSmileCnt(parseInt(clickSmileCnt.innerText));
+            setUpdatedGoodCnt(parseInt(clickGoodCnt.innerText));
+            setUpdatedSadCnt(parseInt(clickSadCnt.innerText));
+            setUpdatedHeartCnt(parseInt(clickHeartCnt.innerText));
+            setUpdatedWorryCnt(parseInt(clickWorryCnt.innerText));
+            setUpdatedCheckCnt(parseInt(clickCheckCnt.innerText));
+        }
+    }, []);
 
     // 리액션 구현
-    const handleOnClick = (e) => {
+    const handleOnClick = async (e) => {
         e.preventDefault();
         const order = e.target.id;
         // clickSmile을 클릭했을 때
-        console.log(order);
+        const postId = order.replace(/\D/g, ''); //문자 제거
+        const clickReaction = order.replace(/[^a-zA-Z]/g, ''); //숫자 제거
+        let reactionNum = 0;
+
+        if (clickReaction === "clickSmile") {
+            setUpdatedSmileCnt(updatedSmileCnt + 1);
+            reactionNum = 1;
+        }
+        else if (clickReaction === "clickGood") {
+            setUpdatedGoodCnt(updatedGoodCnt + 1);
+            reactionNum = 2;
+        }
+        else if (clickReaction === "clickSad") {
+            setUpdatedSadCnt(updatedSadCnt + 1);
+            reactionNum = 3;
+        }
+        else if (clickReaction === "clickHeart") {
+            setUpdatedHeartCnt(updatedHeartCnt + 1);
+            reactionNum = 4;
+        }
+        else if (clickReaction === "clickWorry") {
+            setUpdatedWorryCnt(updatedWorryCnt + 1);
+            reactionNum = 5;
+        }
+        else if (clickReaction === "clickCheck") {
+            setUpdatedCheckCnt(updatedCheckCnt + 1);
+            reactionNum = 6;
+        }
+
+        await reaction(familyId, memberId, postId, reactionNum)
     }
+
     return (
         <div>
             <MainHeader />
