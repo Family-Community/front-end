@@ -48,26 +48,9 @@ function Body() {
         profileImg.style.backgroundImage = `url(${image})`;
     }
 
-    //헤더
-    function MainHeader() {
-        const handleOnClick = (e) => {
-            console.log('logo click event');
-        }
-
-        return (
-            <MainHeaderBox>
-                <p onClick={handleOnClick}></p>
-                <input
-                    type="text"
-                    placeholder="게시물 검색"
-                />
-                <img src={glasses} />
-                <ProfileLink to={`/${familyCode}/${memberId}`}>
-                    <p id="profileImg"></p>
-                </ProfileLink>
-            </MainHeaderBox>
-
-        )
+    // 로고 클릭시
+    const handleOnClickLogo = (e) => {
+        console.log('logo click event');
     }
 
     // post 가져오기
@@ -85,7 +68,7 @@ function Body() {
     }
 
     const [reactionOn, setReactionOn] = useState(false);
-    // state
+    // 리액션 업데이트할 state
     const [smileCnt, setSmileCnt] = useState(0);
     const [goodCnt, setGoodCnt] = useState(0);
     const [sadCnt, setSadCnt] = useState(0);
@@ -114,23 +97,23 @@ function Body() {
                 const title = post[i].title;
                 const content = post[i].content;
                 const date = post[i].date;
-
+                
                 if (post[i].smile_cnt !== 0) {
                     setSmileCnt(post[i].smile_cnt);
                 }
-                if (post[i].good_cnt !== 0) {
+                else if (post[i].good_cnt !== 0) {
                     setGoodCnt(post[i].good_cnt);
                 }
-                if (post[i].sad_cnt !== 0) {
+                else if (post[i].sad_cnt !== 0) {
                     setSadCnt(post[i].sad_cnt);
                 }
-                if (post[i].heart_cnt !== 0) {
+                else if (post[i].heart_cnt !== 0) {
                     setHeartCnt(post[i].heart_cnt);
                 }
-                if (post[i].worry_cnt !== 0) {
+                else if (post[i].worry_cnt !== 0) {
                     setWorryCnt(post[i].worry_cnt);
                 }
-                if (post[i].check_cnt !== 0) {
+                else if (post[i].check_cnt !== 0) {
                     setCheckCnt(post[i].check_cnt);
                 }
 
@@ -161,32 +144,32 @@ function Body() {
                 </div>
             `;
                 if (reactionOn && e && order) {
-                        let reactionNum = 0;
-                        const numberOfPostNumber = post.length;
-                        const postId = order.replace(/\D/g, ''); // 문자 제거
-                        const clickReaction = order.replace(/[^a-zA-Z]/g, ''); // 숫자 제거
+                    let reactionNum = 0;
+                    const numberOfPostNumber = post.length;
+                    const postId = order.replace(/\D/g, ''); // 문자 제거
+                    const clickReaction = order.replace(/[^a-zA-Z]/g, ''); // 숫자 제거
 
-                        if (clickReaction === 'clickSmile') {
-                            setSmileCnt(smileCnt + 1);
-                            reactionNum = 1;
-                        } else if (clickReaction === 'clickGood') {
-                            setGoodCnt(goodCnt + 1);
-                            reactionNum = 2;
-                        } else if (clickReaction === 'clickSad') {
-                            setSadCnt(sadCnt + 1);
-                            reactionNum = 3;
-                        } else if (clickReaction === 'clickHeart') {
-                            setHeartCnt(heartCnt + 1);
-                            reactionNum = 4;
-                        } else if (clickReaction === 'clickWorry') {
-                            setWorryCnt(worryCnt + 1);
-                            reactionNum = 5;
-                        } else if (clickReaction === 'clickCheck') {
-                            setCheckCnt(checkCnt + 1);
-                            reactionNum = 6;
-                        }
-                        //post 요청 보내는 부분
-                        await reaction(navigate, familyCode, familyId, memberId, postId, reactionNum);
+                    if (clickReaction === 'clickSmile') {
+                        setSmileCnt(smileCnt + 1);
+                        reactionNum = 1;
+                    } else if (clickReaction === 'clickGood') {
+                        setGoodCnt(goodCnt + 1);
+                        reactionNum = 2;
+                    } else if (clickReaction === 'clickSad') {
+                        setSadCnt(sadCnt + 1);
+                        reactionNum = 3;
+                    } else if (clickReaction === 'clickHeart') {
+                        setHeartCnt(heartCnt + 1);
+                        reactionNum = 4;
+                    } else if (clickReaction === 'clickWorry') {
+                        setWorryCnt(worryCnt + 1);
+                        reactionNum = 5;
+                    } else if (clickReaction === 'clickCheck') {
+                        setCheckCnt(checkCnt + 1);
+                        reactionNum = 6;
+                    }
+                    //post 요청 보내는 부분
+                    await reaction(navigate, familyCode, familyId, memberId, postId, reactionNum);
                 }
             }
 
@@ -240,26 +223,29 @@ function Body() {
         }
 
     }
-        return (
-            <div>
-                <MainHeader />
+    return (
+        <div>
+            <MainHeaderBox>
+                <p onClick={handleOnClick}></p>
                 <input
                     type="text"
                     placeholder="게시물 검색"
                     onChange={onChangeSearchContent}
                 />
-                <MainBox>
-                    <div id="feedBox" onClick={handleOnClick}>
-                    </div>
-                </MainBox>
-                <ButtonContainer>
-                    <button onClick={handleOnClickPosting}>글쓰기</button>
-                </ButtonContainer>
-            </div>
-
-
-
-        )
+                <img src={glasses} />
+                <ProfileLink to={`/${familyCode}/${memberId}`}>
+                    <p id="profileImg"></p>
+                </ProfileLink>
+            </MainHeaderBox>
+            <MainBox>
+                <div id="feedBox" onClick={handleOnClick}>
+                </div>
+            </MainBox>
+            <ButtonContainer>
+                <button onClick={handleOnClickPosting}>글쓰기</button>
+            </ButtonContainer>
+        </div>
+    )
 
 
 }
