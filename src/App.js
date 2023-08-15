@@ -7,6 +7,7 @@ import ProfileAdd from "./pages/profileAdd";
 import ProfileEdit from "./pages/profileEdit";
 import ProfileAuth from "./pages/profileAuth";
 import Posting from "./pages/posting";
+import PostingUpdate from "./pages/postingUpdate";
 function App() {
   return (
     <Router>
@@ -19,6 +20,7 @@ function App() {
         <Route path={`/:familyCode/:memberId/profileEdit`} element={<ProfileEdit />}></Route>
         <Route path={`/:family_code/profileAuth`} element={<ProfileAuth />}></Route>
         <Route path={`/:familyCode/posting`} element={<Posting />}></Route>
+        <Route path={`/update`} element={<PostingUpdate />}></Route>
       </Routes>
     </Router>
   );
