@@ -88,7 +88,7 @@ function Body() {
 
                 // 새로 추가될 피드
                 const postId = post[i].id;
-                const image = post[i].member.image;
+                let image = post[i].member.image;
                 const name = post[i].member.name;
                 let photo = post[i].photo;
                 if (!image) {
