@@ -5,8 +5,10 @@ import useInput from "../../hooks/useInput";
 import { getFamilyInfo, postingUpdate } from "../../apis/postingUpdateApi/apis";
 function Body() {
     
-    // familyCode 가져오기
+    // familyCode, memberId, postId 가져오기
     const familyCode = useParams().familyCode;
+    const memberId = useParams().memberId;
+    const postId = useParams().postId;
 
     // familyInfo 가져오기
     const [familyId, setFamilyId] = useState('');
@@ -20,15 +22,8 @@ function Body() {
     }
     findFamilyInfo();
 
-    // memberId 가져오기
-    const location = useLocation();
-    let memberId = '';
-    try{
-        memberId = location.state.memberId;
-    }
-    catch(err){
-
-    }
+    // postInfo 가져오기
+    
 
     // 컬러 반영
     if(familyId && color){

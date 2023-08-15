@@ -114,12 +114,12 @@ function Body() {
 
                 // 게시물 렌더링
                 feedBox.innerHTML = prev + `
-                <div>
+                <div id=${postId}>
                     <img src=${image}/>
                     <p>${name}</p>
                     <p>삭제</p> 
                     <p>|</p> 
-                    <p>수정</p> 
+                    <p id="edit">수정</p> 
                     <img src=${photo} /> 
                     <p>${title}</p>
                     <p>${content}</p>
@@ -199,6 +199,16 @@ function Body() {
     const handleOnClick = async (e) => {
         e.preventDefault();
         const order = e.target.id;
+        
+        // 수정 버튼 누를 시
+        if(order === 'edit'){
+            // postId 따기
+            const currPostId = e.target.parentNode.id;
+            // 수정 페이지로
+            navigate(`/${familyCode}/${memberId}/${currPostId}/update`);
+            return;
+        }
+
         // clickSmile을 클릭했을 때
         const postId = order.replace(/\D/g, ''); //문자 제거
         const clickReaction = order.replace(/[^a-zA-Z]/g, ''); //숫자 제거

@@ -20,7 +20,7 @@ function App() {
         <Route path={`/:familyCode/:memberId/profileEdit`} element={<ProfileEdit />}></Route>
         <Route path={`/:family_code/profileAuth`} element={<ProfileAuth />}></Route>
         <Route path={`/:familyCode/posting`} element={<Posting />}></Route>
-        <Route path={`/update`} element={<PostingUpdate />}></Route>
+        <Route path={`/:familyCode/:memberId/:postId/update`} element={<PostingUpdate />}></Route>
       </Routes>
     </Router>
   );
