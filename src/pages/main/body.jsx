@@ -84,8 +84,17 @@ function Body() {
         }
     }
 
+    const [reactionOn, setReactionOn] = useState(false);
+    // state
+    const [smileCnt, setSmileCnt] = useState(0);
+    const [goodCnt, setGoodCnt] = useState(0);
+    const [sadCnt, setSadCnt] = useState(0);
+    const [heartCnt, setHeartCnt] = useState(0);
+    const [worryCnt, setWorryCnt] = useState(0);
+    const [checkCnt, setCheckCnt] = useState(0);
+
     //post 띄우기
-    const setFeeds = async (numberOfPostNumber) => {
+    const setFeeds = async (numberOfPostNumber, e, order) => {
         const feedBox = document.getElementById('feedBox');
         if (feedBox) {
             // 초기화
@@ -98,19 +107,33 @@ function Body() {
                 const postId = post[i].id;
                 const image = post[i].member.image;
                 const name = post[i].member.name;
-                const photo = post[i].photo;
+                let photo = post[i].photo;
                 if (!image) {
                     image = profile;
                 }
                 const title = post[i].title;
                 const content = post[i].content;
                 const date = post[i].date;
-                const smileCnt = post[i].smile_cnt;
-                const goodCnt = post[i].good_cnt;
-                const sadCnt = post[i].sad_cnt;
-                const heartCnt = post[i].heart_cnt;
-                const worryCnt = post[i].worry_cnt;
-                const checkCnt = post[i].check_cnt;
+
+                if (post[i].smile_cnt !== 0) {
+                    setSmileCnt(post[i].smile_cnt);
+                }
+                if (post[i].good_cnt !== 0) {
+                    setGoodCnt(post[i].good_cnt);
+                }
+                if (post[i].sad_cnt !== 0) {
+                    setSadCnt(post[i].sad_cnt);
+                }
+                if (post[i].heart_cnt !== 0) {
+                    setHeartCnt(post[i].heart_cnt);
+                }
+                if (post[i].worry_cnt !== 0) {
+                    setWorryCnt(post[i].worry_cnt);
+                }
+                if (post[i].check_cnt !== 0) {
+                    setCheckCnt(post[i].check_cnt);
+                }
+
 
                 // 게시물 렌더링
                 feedBox.innerHTML = prev + `
@@ -137,7 +160,34 @@ function Body() {
                     <p id="clickCheckCnt">${checkCnt}</p>    
                 </div>
             `;
+                if (reactionOn && e && order) {
+                        let reactionNum = 0;
+                        const numberOfPostNumber = post.length;
+                        const postId = order.replace(/\D/g, ''); // 문자 제거
+                        const clickReaction = order.replace(/[^a-zA-Z]/g, ''); // 숫자 제거
 
+                        if (clickReaction === 'clickSmile') {
+                            setSmileCnt(smileCnt + 1);
+                            reactionNum = 1;
+                        } else if (clickReaction === 'clickGood') {
+                            setGoodCnt(goodCnt + 1);
+                            reactionNum = 2;
+                        } else if (clickReaction === 'clickSad') {
+                            setSadCnt(sadCnt + 1);
+                            reactionNum = 3;
+                        } else if (clickReaction === 'clickHeart') {
+                            setHeartCnt(heartCnt + 1);
+                            reactionNum = 4;
+                        } else if (clickReaction === 'clickWorry') {
+                            setWorryCnt(worryCnt + 1);
+                            reactionNum = 5;
+                        } else if (clickReaction === 'clickCheck') {
+                            setCheckCnt(checkCnt + 1);
+                            reactionNum = 6;
+                        }
+                        //post 요청 보내는 부분
+                        await reaction(navigate, familyCode, familyId, memberId, postId, reactionNum);
+                }
             }
 
         }
@@ -169,39 +219,19 @@ function Body() {
         findSearchInfo();
     }
 
-    //리액션 업데이트할 state 선언
-    const [updatedSmileCnt, setUpdatedSmileCnt] = useState(0);
-    const [updatedGoodCnt, setUpdatedGoodCnt] = useState(0);
-    const [updatedSadCnt, setUpdatedSadCnt] = useState(0);
-    const [updatedHeartCnt, setUpdatedHeartCnt] = useState(0);
-    const [updatedWorryCnt, setUpdatedWorryCnt] = useState(0);
-    const [updatedCheckCnt, setUpdatedCheckCnt] = useState(0);
-
-    useEffect(() => {
-        const clickSmileCnt = document.getElementById('clickSmileCnt');
-        const clickGoodCnt = document.getElementById('clickGoodCnt');
-        const clickSadCnt = document.getElementById('clickSadCnt');
-        const clickHeartCnt = document.getElementById('clickHeartCnt');
-        const clickWorryCnt = document.getElementById('clickWorryCnt');
-        const clickCheckCnt = document.getElementById('clickCheckCnt');
-    
-        if (clickSmileCnt && clickGoodCnt && clickSadCnt && clickHeartCnt && clickWorryCnt && clickCheckCnt) {
-            setUpdatedSmileCnt(parseInt(clickSmileCnt.innerText));
-            setUpdatedGoodCnt(parseInt(clickGoodCnt.innerText));
-            setUpdatedSadCnt(parseInt(clickSadCnt.innerText));
-            setUpdatedHeartCnt(parseInt(clickHeartCnt.innerText));
-            setUpdatedWorryCnt(parseInt(clickWorryCnt.innerText));
-            setUpdatedCheckCnt(parseInt(clickCheckCnt.innerText));
-        }
-    }, []);
-
-    // 리액션 구현
+    // 리액션 클릭했을 때
     const handleOnClick = async (e) => {
         e.preventDefault();
+        //clickSmile35면
         const order = e.target.id;
-        
+        //35
+        setReactionOn(true);
+        // setFeeds 함수 호출 시 numberOfPostNumber와 이벤트 객체(e) 전달
+        const numberOfPostNumber = post.length;
+        setFeeds(numberOfPostNumber, e, order);
+
         // 수정 버튼 누를 시
-        if(order === 'edit'){
+        if (order === 'edit') {
             // postId 따기
             const currPostId = e.target.parentNode.id;
             // 수정 페이지로
@@ -209,61 +239,29 @@ function Body() {
             return;
         }
 
-        // clickSmile을 클릭했을 때
-        const postId = order.replace(/\D/g, ''); //문자 제거
-        const clickReaction = order.replace(/[^a-zA-Z]/g, ''); //숫자 제거
-        let reactionNum = 0;
-
-        if (clickReaction === "clickSmile") {
-            setUpdatedSmileCnt(updatedSmileCnt + 1);
-            reactionNum = 1;
-        }
-        else if (clickReaction === "clickGood") {
-            setUpdatedGoodCnt(updatedGoodCnt + 1);
-            reactionNum = 2;
-        }
-        else if (clickReaction === "clickSad") {
-            setUpdatedSadCnt(updatedSadCnt + 1);
-            reactionNum = 3;
-        }
-        else if (clickReaction === "clickHeart") {
-            setUpdatedHeartCnt(updatedHeartCnt + 1);
-            reactionNum = 4;
-        }
-        else if (clickReaction === "clickWorry") {
-            setUpdatedWorryCnt(updatedWorryCnt + 1);
-            reactionNum = 5;
-        }
-        else if (clickReaction === "clickCheck") {
-            setUpdatedCheckCnt(updatedCheckCnt + 1);
-            reactionNum = 6;
-        }
-
-        await reaction(familyId, memberId, postId, reactionNum)
     }
-
-    return (
-        <div>
-            <MainHeader />
-            <input
-                type="text"
-                placeholder="게시물 검색"
-                onChange={onChangeSearchContent}
-            />
-            <MainBox>
-                <div id="feedBox" onClick={handleOnClick}>
-                </div>
-            </MainBox>
-            <ButtonContainer>
-                <button onClick={handleOnClickPosting}>글쓰기</button>
-            </ButtonContainer>
-        </div>
-
+        return (
+            <div>
+                <MainHeader />
+                <input
+                    type="text"
+                    placeholder="게시물 검색"
+                    onChange={onChangeSearchContent}
+                />
+                <MainBox>
+                    <div id="feedBox" onClick={handleOnClick}>
+                    </div>
+                </MainBox>
+                <ButtonContainer>
+                    <button onClick={handleOnClickPosting}>글쓰기</button>
+                </ButtonContainer>
+            </div>
 
 
-    )
 
-};
+        )
 
+
+}
 
 export default Body;
