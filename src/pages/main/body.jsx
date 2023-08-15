@@ -77,7 +77,7 @@ function Body() {
     const [checkCnt, setCheckCnt] = useState(0);
 
     //post 띄우기
-    const setFeeds = async (numberOfPostNumber, e, order) => {
+    const setFeeds = (numberOfPostNumber, e, order) => {
         const feedBox = document.getElementById('feedBox');
         if (feedBox) {
             // 초기화
@@ -169,7 +169,7 @@ function Body() {
                         reactionNum = 6;
                     }
                     //post 요청 보내는 부분
-                    await reaction(navigate, familyCode, familyId, memberId, postId, reactionNum);
+                    reaction(navigate, familyCode, familyId, memberId, postId, reactionNum);
                 }
             }
 
