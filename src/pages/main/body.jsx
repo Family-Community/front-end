@@ -124,7 +124,7 @@ function Body() {
                     <img src=${image}/>
                     <p>${name}</p>
                     <p>삭제</p> 
-                    <p>|</p> 
+                    <p>|</p>
                     <p id="edit">수정</p> 
                     <img src=${photo} /> 
                     <p>${title}</p>
@@ -168,7 +168,8 @@ function Body() {
                         setCheckCnt(checkCnt + 1);
                         reactionNum = 6;
                     }
-                    //post 요청 보내는 부분
+
+                    // //post 요청 보내는 부분
                     reaction(navigate, familyCode, familyId, memberId, postId, reactionNum);
                 }
             }
@@ -221,6 +222,9 @@ function Body() {
             navigate(`/${familyCode}/${memberId}/${currPostId}/update`);
             return;
         }
+        // 리액션 다는 코드
+
+        // setFeeds다시 한번 호출
 
     }
     return (
