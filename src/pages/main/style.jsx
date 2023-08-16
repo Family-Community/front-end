@@ -46,6 +46,7 @@ export const MainHeaderBox = styled.div`
         margin-right: 15px;
         margin-top: 0;
         margin-bottom: 0;
+        background-image: url(${logo});
         background-position: center;
         background-repeat: no-repeat;
         background-size: contain;

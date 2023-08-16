@@ -67,18 +67,10 @@ function Body() {
         }
     }
 
-    // 리액션 업데이트할 state
-    const [smileCnt, setSmileCnt] = useState(0);
-    const [goodCnt, setGoodCnt] = useState(0);
-    const [sadCnt, setSadCnt] = useState(0);
-    const [heartCnt, setHeartCnt] = useState(0);
-    const [worryCnt, setWorryCnt] = useState(0);
-    const [checkCnt, setCheckCnt] = useState(0);
-
-    // // 게시물 작성자 프로필 누를 때
-    // const handleOnClickProfile = () => {
-    //     navigate(`/${familyCode}/${memberId}/`)
-    // }
+    // 게시물 작성자 프로필 누를 때
+    const handleOnClickProfile = () => {
+        navigate(`/${familyCode}/${memberId}`)
+    }
 
     //post 띄우기
     const setFeeds = (numberOfPostNumber) => {
@@ -102,30 +94,17 @@ function Body() {
                 const content = post[i].content;
                 const date = post[i].date;
 
-                if (post[i].smile_cnt !== 0) {
-                    setSmileCnt(post[i].smile_cnt);
-                }
-                else if (post[i].good_cnt !== 0) {
-                    setGoodCnt(post[i].good_cnt);
-                }
-                else if (post[i].sad_cnt !== 0) {
-                    setSadCnt(post[i].sad_cnt);
-                }
-                else if (post[i].heart_cnt !== 0) {
-                    setHeartCnt(post[i].heart_cnt);
-                }
-                else if (post[i].worry_cnt !== 0) {
-                    setWorryCnt(post[i].worry_cnt);
-                }
-                else if (post[i].check_cnt !== 0) {
-                    setCheckCnt(post[i].check_cnt);
-                }
-
+                let smileCnt = post[i].smile_cnt;
+                let goodCnt = post[i].good_cnt;
+                let sadCnt = post[i].sad_cnt;
+                let heartCnt = post[i].heart_cnt;
+                let worryCnt = post[i].worry_cnt;
+                let checkCnt = post[i].check_cnt;
 
                 // 게시물 렌더링
                 feedBox.innerHTML = prev + `
                 <div id=${postId}>
-                    <img src=${image} />
+                    <img src=${image} onClick={handleOnClickProfile} />
                     <p>${name}</p>
                     <p>삭제</p> 
                     <p>|</p>
@@ -198,27 +177,24 @@ function Body() {
         const clickReaction = order.replace(/[^a-zA-Z]/g, ''); // 숫자 제거
 
         if (clickReaction === 'clickSmile') {
-            setSmileCnt(smileCnt + 1);
             reactionNum = 1;
         } else if (clickReaction === 'clickGood') {
-            setGoodCnt(goodCnt + 1);
             reactionNum = 2;
         } else if (clickReaction === 'clickSad') {
-            setSadCnt(sadCnt + 1);
             reactionNum = 3;
         } else if (clickReaction === 'clickHeart') {
-            setHeartCnt(heartCnt + 1);
             reactionNum = 4;
         } else if (clickReaction === 'clickWorry') {
-            setWorryCnt(worryCnt + 1);
             reactionNum = 5;
         } else if (clickReaction === 'clickCheck') {
-            setCheckCnt(checkCnt + 1);
             reactionNum = 6;
         }
 
         // post 요청 보내는 부분
         reaction(navigate, familyCode, familyId, memberId, postId, reactionNum);
+
+        // 전체 게시물 가져오는 api 호출
+        findPostInfo();
 
         // setFeeds다시 한번 호출
         const numberOfPostNumber = post.length;
