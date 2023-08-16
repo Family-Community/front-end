@@ -1,6 +1,6 @@
 import { MyPageBody } from "./style";
 import { useNavigate, useParams } from "react-router-dom";
-import { getFamilyInfo, getMemberInfo, getMemberPost } from "../../apis/mypageApi/apis";
+import { getFamilyInfo, getMemberInfo, getMemberPost, deletePost } from "../../apis/mypageApi/apis";
 import { useEffect, useState } from "react"; 
 
 function Body() {
@@ -128,6 +128,28 @@ function Body() {
     // 피드 클릭 시 구현
     const handleOnClickPost = (e) => {
         const order = e.target.id;
+        // 수정 클릭 시
+        if (order === 'edit'){
+            const postId = e.target.parentElement.parentElement.id;
+            navigate(`/${familyCode}/${memberId}/${postId}/update`);
+        }
+        // 삭제 클릭 시
+        else if (order === 'delete'){
+            if (me === 'true'){
+                const check = window.confirm('정말 삭제하시겠습니까?');
+                if(check){
+                    const postId = e.target.parentElement.parentElement.id;
+                    deletePost(navigate, familyId, memberId, postId, familyCode);
+                }
+            }
+            else{
+                alert('본인의 게시물이 아니면 삭제할 수 없어요');
+            }
+        }
+        // 리액션 클릭 시
+        else if (order.slice(0, 5) === 'click'){
+
+        }
     }
 
     useEffect(() => {

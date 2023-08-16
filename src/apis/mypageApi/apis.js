@@ -35,3 +35,12 @@ export const getMemberPost = async (memberId) => {
     })
     return post;
 }
+
+export const deletePost = async (navigate, familyId, memberId, postId, familyCode) => {
+    await serverApi.delete(`https://port-0-back-end-eu1k2llkz11als.sel4.cloudtype.app/contents/${familyId}/${memberId}/${postId}/delete`).then((response)=>{
+        if (response.status === 204){
+            alert('게시물이 삭제되었습니다');
+            navigate(`/${familyCode}`, {state: {'familyId': familyId, 'memberId':memberId}});
+        }
+    })
+}
