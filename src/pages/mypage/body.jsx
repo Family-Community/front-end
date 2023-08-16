@@ -1,6 +1,6 @@
 import { MyPageBody } from "./style";
 import { useNavigate, useParams } from "react-router-dom";
-import { getFamilyInfo, getMemberInfo, getMemberPost, deletePost } from "../../apis/mypageApi/apis";
+import { getFamilyInfo, getMemberInfo, getMemberPost, deletePost, addReaction } from "../../apis/mypageApi/apis";
 import { useEffect, useState } from "react"; 
 
 function Body() {
@@ -112,12 +112,12 @@ function Body() {
                             <p id="clickCheck">✔</p>
                         </div>
                         <div>
-                            <p>${smileCnt}</p>
-                            <p>${goodCnt}</p>
-                            <p>${sadCnt}</p>
-                            <p>${heartCnt}</p>
-                            <p>${worryCnt}</p>
-                            <p>${checkCnt}</p>
+                            <p id="cntSmile${postId}">${smileCnt}</p>
+                            <p id="cntGood${postId}">${goodCnt}</p>
+                            <p id="cntSad${postId}">${sadCnt}</p>
+                            <p id="cntHeart${postId}">${heartCnt}</p>
+                            <p id="cntWorry${postId}">${worryCnt}</p>
+                            <p id="cntCheck${postId}">${checkCnt}</p>
                         </div>
                     </div>
                 </div>
@@ -126,7 +126,7 @@ function Body() {
     }
 
     // 피드 클릭 시 구현
-    const handleOnClickPost = (e) => {
+    const handleOnClickPost = async (e) => {
         const order = e.target.id;
         // 수정 클릭 시
         if (order === 'edit'){
@@ -148,13 +148,86 @@ function Body() {
         }
         // 리액션 클릭 시
         else if (order.slice(0, 5) === 'click'){
-
+            const reactionType = order.slice(5);
+            const postId = e.target.parentElement.parentElement.parentElement.id;
+            if (reactionType === 'Smile'){
+                const reactionCheck = await addReaction(familyId, memberId, postId, 1);
+                const cntSmile = document.getElementById(`cntSmile${postId}`);
+                // 0 -> 1의 경우
+                if (reactionCheck) {
+                    cntSmile.innerText='1';
+                }
+                // 1 -> 0의 경우
+                else{
+                    cntSmile.innerText='0';
+                }
+            }
+            else if (reactionType === 'Good'){
+                const reactionCheck = await addReaction(familyId, memberId, postId, 2);
+                const cntGood = document.getElementById(`cntGood${postId}`);
+                // 0 -> 1의 경우
+                if (reactionCheck) {
+                    cntGood.innerText='1';
+                }
+                // 1 -> 0의 경우
+                else{
+                    cntGood.innerText='0';
+                }
+            }
+            else if (reactionType === 'Sad'){
+                const reactionCheck = await addReaction(familyId, memberId, postId, 3);
+                const cntSad = document.getElementById(`cntSad${postId}`);
+                // 0 -> 1의 경우
+                if (reactionCheck) {
+                    cntSad.innerText='1';
+                }
+                // 1 -> 0의 경우
+                else{
+                    cntSad.innerText='0';
+                }
+            }
+            else if (reactionType === 'Heart'){
+                const reactionCheck = await addReaction(familyId, memberId, postId, 4);
+                const cntHeart = document.getElementById(`cntHeart${postId}`);
+                // 0 -> 1의 경우
+                if (reactionCheck) {
+                    cntHeart.innerText='1';
+                }
+                // 1 -> 0의 경우
+                else{
+                    cntHeart.innerText='0';
+                }
+            }
+            else if (reactionType === 'Worry'){
+                const reactionCheck = await addReaction(familyId, memberId, postId, 5);
+                const cntWorry = document.getElementById(`cntWorry${postId}`);
+                // 0 -> 1의 경우
+                if (reactionCheck) {
+                    cntWorry.innerText='1';
+                }
+                // 1 -> 0의 경우
+                else{
+                    cntWorry.innerText='0';
+                }
+            }
+            else if (reactionType === 'Check'){
+                const reactionCheck = await addReaction(familyId, memberId, postId, 6);
+                const cntCheck = document.getElementById(`cntCheck${postId}`);
+                // 0 -> 1의 경우
+                if (reactionCheck) {
+                    cntCheck.innerText='1';
+                }
+                // 1 -> 0의 경우
+                else{
+                    cntCheck.innerText='0';
+                }
+            }
         }
     }
 
     useEffect(() => {
         findUserPost();
-    },[])
+    }, [])
 
     return (
         <MyPageBody>

@@ -44,3 +44,11 @@ export const deletePost = async (navigate, familyId, memberId, postId, familyCod
         }
     })
 }
+
+export const addReaction = async (familyId, memberId, postId, reactionType) => {
+    let reactionCheck = '';
+    await serverApi.post(`https://port-0-back-end-eu1k2llkz11als.sel4.cloudtype.app/contents/${familyId}/${memberId}/${postId}/reaction/${reactionType}/`).then((response) => {
+      reactionCheck = response.data;
+    })
+    return reactionCheck;
+}
