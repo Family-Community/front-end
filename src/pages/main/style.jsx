@@ -77,6 +77,11 @@ export const MainBox = styled.div`
     margin: 20px;
     padding: 10px;
     position: relative;
+    width: 80%;
+    margin: 0 auto;
+    height: 500px;
+    overflow: scroll;
+    margin-top: 30px;
 
     img:nth-child(1) {
         width: 25px;
