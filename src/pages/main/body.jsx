@@ -87,6 +87,7 @@ function Body() {
                 let image = post[i].member.image;
                 const name = post[i].member.name;
                 let photo = post[i].photo;
+                const postMemberId = post[i].member.id;
                 if (!image) {
                     image = profile;
                 }
@@ -104,7 +105,7 @@ function Body() {
                 // 게시물 렌더링
                 feedBox.innerHTML = prev + `
                 <div id=${postId}>
-                    <img src=${image} onClick={handleOnClickProfile} />
+                    <img src=${image} id="toMyPage_${postMemberId}"/>
                     <p>${name}</p>
                     <p>삭제</p> 
                     <p>|</p>
@@ -157,10 +158,10 @@ function Body() {
         findSearchInfo();
     }
 
-    // 리액션 클릭했을 때
+    // feedBox 클릭 시
     const handleOnClick = async (e) => {
         e.preventDefault();
-        //clickSmile35면
+        // order -> 다음 동작의 명령
         const order = e.target.id;
 
         // 수정 버튼 누를 시
@@ -171,46 +172,63 @@ function Body() {
             navigate(`/${familyCode}/${memberId}/${currPostId}/update`);
             return;
         }
-        // 리액션 다는 코드
-        let reactionNum = 0;
-        const postId = order.replace(/\D/g, ''); // 문자 제거
-        const clickReaction = order.replace(/[^a-zA-Z]/g, ''); // 숫자 제거
 
-        if (clickReaction === 'clickSmile') {
-            reactionNum = 1;
-        } else if (clickReaction === 'clickGood') {
-            reactionNum = 2;
-        } else if (clickReaction === 'clickSad') {
-            reactionNum = 3;
-        } else if (clickReaction === 'clickHeart') {
-            reactionNum = 4;
-        } else if (clickReaction === 'clickWorry') {
-            reactionNum = 5;
-        } else if (clickReaction === 'clickCheck') {
-            reactionNum = 6;
+        // 프로필 사진을 선택했다면 (게시글의)
+        else if(order.slice(0, 8) === 'toMyPage'){
+            const postMemberId = order.slice(9);
+            // 누른 사람과 프로필 사진의 사람이 같으면
+            if (postMemberId === memberId){
+                navigate(`/${familyCode}/${memberId}/true`);
+            }
+            else{
+                navigate(`/${familyCode}/${memberId}/false`);
+            }
         }
 
-        // post 요청 보내는 부분
-        reaction(navigate, familyCode, familyId, memberId, postId, reactionNum);
+        // 리액션을 클릭했다면
+        else{
+            // 리액션 다는 코드
+            let reactionNum = 0;
+            const postId = order.replace(/\D/g, ''); // 문자 제거
+            const clickReaction = order.replace(/[^a-zA-Z]/g, ''); // 숫자 제거
 
-        // 전체 게시물 가져오는 api 호출
-        findPostInfo();
+            if (clickReaction === 'clickSmile') {
+                reactionNum = 1;
+            } else if (clickReaction === 'clickGood') {
+                reactionNum = 2;
+            } else if (clickReaction === 'clickSad') {
+                reactionNum = 3;
+            } else if (clickReaction === 'clickHeart') {
+                reactionNum = 4;
+            } else if (clickReaction === 'clickWorry') {
+                reactionNum = 5;
+            } else if (clickReaction === 'clickCheck') {
+                reactionNum = 6;
+            }
 
-        // setFeeds다시 한번 호출
-        const numberOfPostNumber = post.length;
-        setFeeds(numberOfPostNumber)
+            // post 요청 보내는 부분
+            reaction(navigate, familyCode, familyId, memberId, postId, reactionNum);
+
+            // 전체 게시물 가져오는 api 호출
+            findPostInfo();
+
+            // setFeeds다시 한번 호출
+            const numberOfPostNumber = post.length;
+            setFeeds(numberOfPostNumber)
+        }
+
     }
     return (
         <div>
             <MainHeaderBox>
-                <p onClick={handleOnClick}></p>
+                <p></p>
                 <input
                     type="text"
                     placeholder="게시물 검색"
                     onChange={onChangeSearchContent}
                 />
                 <img src={glasses} />
-                <ProfileLink to={`/${familyCode}/${memberId}`}>
+                <ProfileLink to={`/${familyCode}/${memberId}/true`}>
                     <p id="profileImg"></p>
                 </ProfileLink>
             </MainHeaderBox>
