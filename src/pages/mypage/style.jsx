@@ -18,7 +18,7 @@ export const MyPageBody = styled.div`
             line-height: 70px;
             text-align: center;
             span{
-
+                
             }
             span:nth-child(1){
 
@@ -28,7 +28,7 @@ export const MyPageBody = styled.div`
             }
         }
         p:nth-child(2){
-            width:70px;
+            width: 70px;
             margin: 0;
             background-repeat: no-repeat;
             background-position: center;
@@ -40,18 +40,17 @@ export const MyPageBody = styled.div`
     #feedBox{
         width: 80%;
         margin: 0 auto;
-        height: 450px;
-        border: 2px solid red;
+        height: 500px;
         border-radius: 5px;
         box-sizing: border-box;
         overflow: scroll;
         div{
             margin: 0 auto;
-            border: 2px solid red;
             box-sizing: border-box;
             border-radius: 5px;
             margin-top: 10px;
             width: 90%;
+            margin-bottom: 10px;
             div:nth-child(1){
                 margin: 0 auto;
                 height: 50px;
@@ -59,6 +58,7 @@ export const MyPageBody = styled.div`
                 width: 90%;
                 justify-content: space-around;
                 border: none;
+                margin-top: 10px;
                 p{  
                     margin: 0;
                     line-height: 50px;
@@ -66,6 +66,10 @@ export const MyPageBody = styled.div`
                     text-align: center;
                     font-size: 120%;
                     font-weight: 700;
+                    background-position: center;
+                    background-size: cover;
+                    border-radius: 50%;
+                    background-repeat: no-repeat;
                 }
                 p:nth-child(1){
                     display: block;
@@ -78,10 +82,12 @@ export const MyPageBody = styled.div`
                 p:nth-child(3){
                     width: calc((100% - 50px) * 0.2);
                     text-align: center;
+                    font-weight: 500;
                 }
                 p:nth-child(4){
                     width: calc((100% - 50px) * 0.2);
                     text-align: center;
+                    font-weight: 500;
                 }
             }
             div:nth-child(2){
@@ -93,17 +99,20 @@ export const MyPageBody = styled.div`
                 background-position: center;
                 background-repeat: no-repeat;
                 background-size: contain;
-                border: none;
-
+                border:none;
             }
             div:nth-child(3){
                 width: 80%;
                 height: 150px;
                 margin-bottom: 10px;
-                border: none;
+                box-sizing: border-box;
+                border-radius: 10px;
+                padding: 10px;
+                text-align: center;
+                font-size: 120%;
             }
             div:nth-child(4){
-                width: 100%;
+                width: 90%;
                 height: 80px;
                 border: none;
                 div{
@@ -112,11 +121,12 @@ export const MyPageBody = styled.div`
                 }
                 div:nth-child(1){
                     width: 100%;
-                    height: 25px;
+                    height: 30px;
                     p{
-                        width: 25px;
-                        height: 25px;
+                        width: 30px;
+                        height: 30px;
                         margin: 0;
+                        line-height: 30px;
                     }
                     p:nth-child(1){
                         
@@ -131,19 +141,18 @@ export const MyPageBody = styled.div`
 
                     }
                     p:nth-child(5){
-
-                    }
-                    p:nth-child(6){
 
                     }
                 }
                 div:nth-child(2){
                     width: 100%;
-                    height: 25px;
+                    height: 30px;
                     p{
-                        width: 25px;
-                        height: 25px;
+                        width: 30px;
+                        height: 30px;
                         margin: 0;
+                        text-align: center;
+                        line-height: 30px;
                     }
                     p:nth-child(1){
                         
@@ -160,11 +169,19 @@ export const MyPageBody = styled.div`
                     p:nth-child(5){
 
                     }
-                    p:nth-child(6){
-
-                    }
                 }
             }
         }
+    }
+    #toEditProfileBtn{
+        display: none;
+        margin: 0 auto;
+        width: 25%;
+        line-height: 2.5;
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        color: #fff;
     }
 `

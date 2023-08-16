@@ -26,7 +26,7 @@ export const getFamilyInfo = async (familyCode) => {
 
 export const createMember = async(navigate, familyId, name, image, familyName, familyCode) => {
     
-    await serverApiMember.post(`https://port-0-back-end-eu1k2llkz11als.sel4.cloudtype.app/group/${familyId}/profile/create/`, {'name':name, 'image':image}).then((response)=>{
+    await serverApiMember.post(`https://port-0-back-end-eu1k2llkz11als.sel4.cloudtype.app/group/${familyId}/profile/create/`, {'name':name, 'image_original':image}).then((response)=>{
         if(response.request.status === 201){
             alert(`${name}님 ${familyName} 안방에 오신것을 환영합니다`);
             navigate(`/${familyCode}/profileAuth`);

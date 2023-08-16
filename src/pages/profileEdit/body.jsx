@@ -14,7 +14,6 @@ function Body() {
     // familyId, name, image, color, familyName, prevPhoto 가져오기
     const [familyId, setFamilyId] = useState('');
     const [name, setName] = useState(''); 
-    const [image, setImage] = useState(''); 
     const [color, setColor] = useState('');
     const [familyName, setFamilyName] = useState('');
     const [prevPhoto, setPrevPhoto] = useState('');
