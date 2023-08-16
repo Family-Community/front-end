@@ -67,7 +67,6 @@ function Body() {
         }
     }
 
-    const [reactionOn, setReactionOn] = useState(false);
     // 리액션 업데이트할 state
     const [smileCnt, setSmileCnt] = useState(0);
     const [goodCnt, setGoodCnt] = useState(0);
@@ -76,8 +75,13 @@ function Body() {
     const [worryCnt, setWorryCnt] = useState(0);
     const [checkCnt, setCheckCnt] = useState(0);
 
+    // // 게시물 작성자 프로필 누를 때
+    // const handleOnClickProfile = () => {
+    //     navigate(`/${familyCode}/${memberId}/`)
+    // }
+
     //post 띄우기
-    const setFeeds = (numberOfPostNumber, e, order) => {
+    const setFeeds = (numberOfPostNumber) => {
         const feedBox = document.getElementById('feedBox');
         if (feedBox) {
             // 초기화
@@ -97,7 +101,7 @@ function Body() {
                 const title = post[i].title;
                 const content = post[i].content;
                 const date = post[i].date;
-                
+
                 if (post[i].smile_cnt !== 0) {
                     setSmileCnt(post[i].smile_cnt);
                 }
@@ -121,7 +125,7 @@ function Body() {
                 // 게시물 렌더링
                 feedBox.innerHTML = prev + `
                 <div id=${postId}>
-                    <img src=${image}/>
+                    <img src=${image} />
                     <p>${name}</p>
                     <p>삭제</p> 
                     <p>|</p>
@@ -143,35 +147,6 @@ function Body() {
                     <p id="clickCheckCnt">${checkCnt}</p>    
                 </div>
             `;
-                if (reactionOn && e && order) {
-                    let reactionNum = 0;
-                    const numberOfPostNumber = post.length;
-                    const postId = order.replace(/\D/g, ''); // 문자 제거
-                    const clickReaction = order.replace(/[^a-zA-Z]/g, ''); // 숫자 제거
-
-                    if (clickReaction === 'clickSmile') {
-                        setSmileCnt(smileCnt + 1);
-                        reactionNum = 1;
-                    } else if (clickReaction === 'clickGood') {
-                        setGoodCnt(goodCnt + 1);
-                        reactionNum = 2;
-                    } else if (clickReaction === 'clickSad') {
-                        setSadCnt(sadCnt + 1);
-                        reactionNum = 3;
-                    } else if (clickReaction === 'clickHeart') {
-                        setHeartCnt(heartCnt + 1);
-                        reactionNum = 4;
-                    } else if (clickReaction === 'clickWorry') {
-                        setWorryCnt(worryCnt + 1);
-                        reactionNum = 5;
-                    } else if (clickReaction === 'clickCheck') {
-                        setCheckCnt(checkCnt + 1);
-                        reactionNum = 6;
-                    }
-
-                    // //post 요청 보내는 부분
-                    reaction(navigate, familyCode, familyId, memberId, postId, reactionNum);
-                }
             }
 
         }
@@ -208,11 +183,6 @@ function Body() {
         e.preventDefault();
         //clickSmile35면
         const order = e.target.id;
-        //35
-        setReactionOn(true);
-        // setFeeds 함수 호출 시 numberOfPostNumber와 이벤트 객체(e) 전달
-        const numberOfPostNumber = post.length;
-        setFeeds(numberOfPostNumber, e, order);
 
         // 수정 버튼 누를 시
         if (order === 'edit') {
@@ -223,9 +193,36 @@ function Body() {
             return;
         }
         // 리액션 다는 코드
+        let reactionNum = 0;
+        const postId = order.replace(/\D/g, ''); // 문자 제거
+        const clickReaction = order.replace(/[^a-zA-Z]/g, ''); // 숫자 제거
+
+        if (clickReaction === 'clickSmile') {
+            setSmileCnt(smileCnt + 1);
+            reactionNum = 1;
+        } else if (clickReaction === 'clickGood') {
+            setGoodCnt(goodCnt + 1);
+            reactionNum = 2;
+        } else if (clickReaction === 'clickSad') {
+            setSadCnt(sadCnt + 1);
+            reactionNum = 3;
+        } else if (clickReaction === 'clickHeart') {
+            setHeartCnt(heartCnt + 1);
+            reactionNum = 4;
+        } else if (clickReaction === 'clickWorry') {
+            setWorryCnt(worryCnt + 1);
+            reactionNum = 5;
+        } else if (clickReaction === 'clickCheck') {
+            setCheckCnt(checkCnt + 1);
+            reactionNum = 6;
+        }
+
+        // post 요청 보내는 부분
+        reaction(navigate, familyCode, familyId, memberId, postId, reactionNum);
 
         // setFeeds다시 한번 호출
-
+        const numberOfPostNumber = post.length;
+        setFeeds(numberOfPostNumber)
     }
     return (
         <div>
