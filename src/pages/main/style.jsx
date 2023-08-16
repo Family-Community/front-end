@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
-import logo from "../../assets/images/logo.png";
 import profile from '../../assets/images/profile.svg';
 
 
@@ -9,7 +8,7 @@ export const MainHeaderBox = styled.div`
     align-items: center;
     justify-content: space-between;
 
-    p {  
+    p:nth-child(1) {  
         width: 60px;
         height: 35px;
         line-height: 30px;
@@ -18,7 +17,6 @@ export const MainHeaderBox = styled.div`
         margin-right: 30px;
         margin-top: 0;
         margin-bottom: 0;
-        background-image: url(${logo});
         background-position: left;
         background-repeat: no-repeat;
         background-size: contain;
@@ -26,28 +24,16 @@ export const MainHeaderBox = styled.div`
     }
 
     input {
-        margin-left: 30px;
         width: 100px;
         border:none;
         text-align: center;
+        margin-right: 60px;
     }
 
-    img:nth-child(3){
-        margin-left: 0;
-        margin-right: 110px;
-        width: 13px;
-        height: 13px;
-    }
-
-    img:nth-child(4) {
-        width: 25px;
-        height: 25px;
-        margin-left: 0;
-        margin-right: 15px;
-        margin-top: 0;
-        margin-bottom: 0;
-        background-image: url(${logo});
-        background-position: center;
+    p:nth-child(3) {
+        width: 40px;
+        height: 40px;
+        background-position: right;
         background-repeat: no-repeat;
         background-size: contain;
     }
@@ -55,25 +41,24 @@ export const MainHeaderBox = styled.div`
 
 export const ProfileLink = styled(Link)`
     display: inline-block;
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
     margin-right: 15px;
     p{
         display: block;
-        width: 30px;
-        height: 30px;
+        width: 40px;
+        height: 40px;
         margin-left: 0;
         margin-right: 15px;
         margin-top: 0;
         margin-bottom: 0;
-        background-position: center;
+        background-position: right;
         background-repeat: no-repeat;
-        background-size: cover;
+        background-size: contain;
     }
 `;
 
 export const MainBox = styled.div`
-    border: 1px solid #ccc;
     margin: 20px;
     padding: 10px;
     position: relative;
@@ -286,8 +271,7 @@ export const ButtonContainer = styled.div`
         line-height: 2;
         font-size: 100%;
         border: none;
-        background-color: #D5C2EE;
-        color: #8572EE;
+        color: #505050;
         opacity: 0.7;
         cursor: pointer;
         border-radius: 40px;
