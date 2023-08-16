@@ -2,7 +2,7 @@ import { PostBody } from "./style";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import useInput from "../../hooks/useInput";
-import { getFamilyInfo, postingUpdate } from "../../apis/postingUpdateApi/apis";
+import { getFamilyInfo, postingUpdate, getPrevPost } from "../../apis/postingUpdateApi/apis";
 function Body() {
     
     // familyCode, memberId, postId 가져오기
@@ -22,8 +22,38 @@ function Body() {
     }
     findFamilyInfo();
 
-    // postInfo 가져오기
-    
+    // prevContent 가져오기
+    const [prevTitle, setPrevTitle] = useState('');
+    const [prevPhoto, setPrevPhoto] = useState('');
+    const [prevContent, setPrevContent] = useState('');
+    const findPrevPost = async() => {
+        const prevPost = await getPrevPost(postId);
+        const prevTitle = prevPost[0];
+        const prevContent = prevPost[1];
+        const prevPhoto = prevPost[2];
+        setPrevTitle(prevTitle);
+        setPrevContent(prevContent);
+        setPrevPhoto(prevPhoto);
+    }
+    findPrevPost();
+
+    const testSet = () => {
+        const titleInput = document.getElementById('titleInput');
+        titleInput.value = prevTitle;
+
+        const photoBox = document.getElementById('photoBox');
+        photoBox.style.backgroundImage = `url(${prevPhoto})`;
+        photoBox.style.border = 'none';
+        photoBox.style.backgroundSize = 'contain';
+
+        const textarea = document.getElementById('textarea');
+        textarea.innerText = prevContent;
+    }
+
+    // from 내의 정보
+    const [title, onChangeTitle, setTitle] = useInput('');
+    const [content, onChangeContent, setContent] = useInput('');
+    const [photo, setPhoto] = useState('');
 
     // 컬러 반영
     if(familyId && color){
@@ -31,18 +61,11 @@ function Body() {
         titleInput.style.border = `2px solid ${color}`;
         const uploadFileLabel = document.getElementById('uploadFileLabel');
         uploadFileLabel.style.backgroundColor = `${color}`;
-        const photoBox = document.getElementById('photoBox');
-        photoBox.style.border = `2px solid ${color}`;
         const textarea = document.getElementById('textarea');
         textarea.style.border = `2px solid ${color}`;
         const completeBtn = document.getElementById('completeBtn');
         completeBtn.style.backgroundColor = `${color}`;
     }
-
-    // from 내의 정보
-    const [title, onChangeTitle, setTitle] = useInput('');
-    const [content, onChangeContent, setContent] = useInput('');
-    const [photo, setPhoto] = useState('');
 
     // 사진 업로드 시
     const handleOnChangePhoto = (e) => {
@@ -59,7 +82,7 @@ function Body() {
         setPhoto(selectedPhoto);
     }
 
-    // 작성완료 버튼 누를 시
+    // 수정 완료 버튼 누를 시
     const navigate = useNavigate();
     const handleOnSubmit = (e) => {
         e.preventDefault();
@@ -70,7 +93,7 @@ function Body() {
             alert('사진을 등록해주세요');
         }
         else{
-            postingUpdate(navigate, familyCode, familyId, memberId, title, content, photo);
+            postingUpdate(navigate, familyCode, familyId, memberId, postId, title, content, photo);
         }
     }
     
@@ -91,8 +114,12 @@ function Body() {
         setCurrLengthSpan(currLengthSpan);
     }
     useEffect(()=>{
+        setTitle(prevTitle);
+        setPhoto(prevPhoto);
+        setContent(prevContent);
         getCurrLengthSpan();
-    }, [])
+        testSet();
+    }, [prevTitle, prevPhoto, prevContent])
     if(currLengthSpan){
         const currLength = content.length;
         currLengthSpan.innerText = `(${currLength}자)`;
