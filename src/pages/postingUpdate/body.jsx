@@ -1,5 +1,5 @@
 import { PostBody } from "./style";
-import { useParams, useLocation, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import useInput from "../../hooks/useInput";
 import { getFamilyInfo, postingUpdate, getPrevPost } from "../../apis/postingUpdateApi/apis";
@@ -37,7 +37,7 @@ function Body() {
     }
     findPrevPost();
 
-    const testSet = () => {
+    const prevInfoSet = () => {
         const titleInput = document.getElementById('titleInput');
         titleInput.value = prevTitle;
 
@@ -118,7 +118,7 @@ function Body() {
         setPhoto(prevPhoto);
         setContent(prevContent);
         getCurrLengthSpan();
-        testSet();
+        prevInfoSet();
     }, [prevTitle, prevPhoto, prevContent])
     if(currLengthSpan){
         const currLength = content.length;

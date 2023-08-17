@@ -37,12 +37,12 @@ function Body() {
     if(familyId && color && familyName){
         findMemberInfo();
     }
-    
-    // 컬러 및 이름, 사진 적용
-    if(color && name && familyName){
 
+    // 컬러 및 이름, 사진 적용
+    const prevInfoSet = () => {
         const newNameInput = document.getElementById('newNameInput');
         newNameInput.style.border = `2px solid ${color}`;
+        newNameInput.value = name;
 
         const prevPhotoBox = document.getElementById('prevPhotoBox');
         if (prevPhoto){
@@ -52,6 +52,10 @@ function Body() {
             prevPhotoBox.style.backgroundImage = `url(${profile})`;
         }
         prevPhotoBox.style.border = `2px solid ${color}`;
+
+        const photoBox = document.getElementById('photoBox');
+        photoBox.style.backgroundImage = `url(${prevPhoto})`;
+        photoBox.style.backgroundSize = `100%`;
 
         const familyNameSpan = document.getElementById('familyNameSpan');
         familyNameSpan.innerText = `${familyName} `;
@@ -70,6 +74,7 @@ function Body() {
         const changeBtn = document.getElementById('changeBtn');
         changeBtn.style.backgroundColor = `${color}`;
     }
+    
     // form 내의 데이터들
     const [newName, onChangeNewName, setNewName] = useInput('');
     const [newPhoto, setNewPhoto] = useState('');
@@ -105,24 +110,6 @@ function Body() {
         setNewPhoto(selectedPhoto);
     }
 
-    // 버튼 활성화 구현
-    const [changeBtn, setChangeBtn] = useState('');
-    const getChangeBtn = () => {
-        const changeBtn = document.getElementById('changeBtn');
-        setChangeBtn(changeBtn);
-    }
-    useEffect(() => {
-        getChangeBtn();
-    }, [])
-    if(changeBtn){
-        if(newName.length > 1){
-            changeBtn.style.color = `#fff`;
-        }
-        else{
-            changeBtn.style.color = `red`;
-        }
-    }
-
     // 가족 삭제 구현
     const handleOnClickDeleteFamily = () => {
         const finalCheck = prompt(`가족을 삭제하면 복구가 불가능해요 그럼에도 삭제하시겠다면 '${familyName}'을/를 적어주세요`);
@@ -131,6 +118,27 @@ function Body() {
         }
         else{
             alert('가족 삭제를 취소하셨습니다');
+        }
+    }
+
+    // 버튼 활성화 구현
+    const [changeBtn, setChangeBtn] = useState('');
+    const getChangeBtn = () => {
+        const changeBtn = document.getElementById('changeBtn');
+        setChangeBtn(changeBtn);
+    }
+    useEffect(() => {
+        setNewName(name);
+        setNewPhoto(prevPhoto);
+        getChangeBtn();
+        prevInfoSet();
+    }, [name, prevPhoto])
+    if(changeBtn){
+        if(newName.length > 1){
+            changeBtn.style.color = `#fff`;
+        }
+        else{
+            changeBtn.style.color = `red`;
         }
     }
 

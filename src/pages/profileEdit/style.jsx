@@ -72,8 +72,6 @@ export const ProfileEditBody = styled.div`
             width: 50%;
             height: 250px;
             margin: 0 auto;
-            border: 1px solid #aaaaaa;
-            box-sizing: border-box;
             background-image: url(${profile});
             background-repeat: no-repeat;
             background-size: 60%;
