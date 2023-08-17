@@ -135,7 +135,7 @@ function Body() {
             }
 
             // 링크생성
-            const link = `http://localhost:3000/${familyCode}/profileAuth`;
+            const link = `https://front-end-xi-bice.vercel.app//${familyCode}/profileAuth`;
             
             Kakao.Share.createDefaultButton({
                 container: '#kakaotalk-sharing-btn',
@@ -147,8 +147,8 @@ function Body() {
                     `https://github.com/Family-Community/front-end/assets/83502596/b31669b0-17d4-4966-b0ec-59787947cf3f`,
                   link: {
                     // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
-                    mobileWebUrl: 'http://localhost:3000',
-                    webUrl: 'http://localhost:3000',
+                    mobileWebUrl: 'https://front-end-xi-bice.vercel.app/',
+                    webUrl: 'https://front-end-xi-bice.vercel.app/',
                   },
                 },
                 buttons: [
