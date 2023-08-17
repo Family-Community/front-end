@@ -51,6 +51,7 @@ export const ProfileLink = styled(Link)`
         background-position: center;
         background-repeat: no-repeat;
         background-size: contain;
+        border-radius: 50%;
     }
 `;
 
@@ -64,195 +65,166 @@ export const MainBox = styled.div`
     overflow: scroll;
     margin-top: 30px;
 
-    img:nth-child(1) {
-        width: 25px;
-        height: 25px;
-        text-align: left;
-        padding-top:3px;
-        margin: 0;
+    #feedBox{       
+        #name{
+            transform: translateY(-7px);
+        }
+        
+        img:nth-child(1) {
+            width: 30px;
+            height: 30px;
+            text-align: left;
+            padding-top:3px;
+            margin: 0;
+            border-radius: 50%;
+        }
+
+        p:nth-child(2){
+            margin: 0;
+            font-size: 100%;
+            line-height: 2.5;
+            display: inline-block;
+            width: 20%;
+            text-align: left;
+            padding-left: 5px;
+            padding-bottom: 5px;
+            height: 25px;
+        }
+
+        p:nth-child(3){
+            margin: 0;
+            font-size: 80%;
+            line-height: 2.5;
+            display: inline-block;
+            width: 8%;
+            text-align: center;
+            float: right;
+        }
+
+        p:nth-child(4){
+            margin: 0;
+            font-size: 80%;
+            line-height: 2.5;
+            display: inline-block;
+            width: 2%;
+            text-align: center;
+            float: right;
+        }
+
+        p:nth-child(5){
+            margin: 0;
+            font-size: 80%;
+            line-height: 2.5;
+            display: inline-block;
+            width: 8%;
+            text-align: center;
+            float: right;
+            padding-right: 0;
+        }
+
+        img:nth-child(6) {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            padding-top: 10px;
+        }
+
+        p:nth-child(7){
+            margin: 0;
+            font-size: 110%;
+            line-height: 2.5;
+            display: block;
+            width: 80%;
+            text-align: left;
+        }
+
+        p:nth-child(8){
+            margin: 0;
+            font-size: 90%;
+            line-height: 2.5;
+            display: block;
+            width: 80%;
+            text-align: left;
+        }
+
+        #reactionBox{
+                width: 90%;
+                height: 80px;
+                border: none;
+                font-size: 20px;
+                text-align: center;
+                justify-content: center;
+                margin-left: 15px;
+                margin-top: 20px;
+
+                div{
+                    display: flex;
+                    justify-content: space-around;
+                }
+
+                div:nth-child(1){
+                    width: 100%;
+                    height: 30px;
+                    p{
+                        width: 30px;
+                        height: 30px;
+                        margin: 0;
+                        line-height: 30px;
+                    }
+                    p:nth-child(1){
+                        
+                    }
+                    p:nth-child(2){
+                        padding: 0;
+                    }
+                    p:nth-child(3){
+                        font-size: 20px;
+                    }
+                    p:nth-child(4){
+                        font-size: 20px;
+                    }
+                    p:nth-child(5){
+                        font-size: 20px;
+                    }
+                    p:nth-child(6){
+
+                    }
+                }
+                div:nth-child(2){
+                    width: 100%;
+                    height: 30px;
+                    margin-top: 10px;
+                    p{
+                        width: 30px;
+                        height: 30px;
+                        margin: 0;
+                        text-align: center;
+                        line-height: 30px;
+                    }
+                    p:nth-child(1){
+                        place-items: center;
+                    }
+                    p:nth-child(2){
+                        padding: 0;
+                        place-items: center;
+                    }
+                    p:nth-child(3){
+                        font-size: 20px;
+                        place-items: center;
+                    }
+                    p:nth-child(4){
+                        font-size: 20px;
+                        place-items: center;
+                    }
+                    p:nth-child(5){
+                        font-size: 20px;
+                        place-items: center;
+                    }
+                }
+            }
+            
     }
 
-    p:nth-child(2){
-        margin: 0;
-        font-size: 100%;
-        line-height: 2.5;
-        display: inline-block;
-        width: 20%;
-        text-align: left;
-        padding-left: 5px;
-        padding-bottom: 5px;
-        height: 25px;
-    }
-
-    p:nth-child(3){
-        margin: 0;
-        font-size: 80%;
-        line-height: 2.5;
-        display: inline-block;
-        width: 8%;
-        text-align: center;
-        float: right;
-    }
-
-    p:nth-child(4){
-        margin: 0;
-        font-size: 80%;
-        line-height: 2.5;
-        display: inline-block;
-        width: 2%;
-        text-align: center;
-        float: right;
-    }
-
-    p:nth-child(5){
-        margin: 0;
-        font-size: 80%;
-        line-height: 2.5;
-        display: inline-block;
-        width: 8%;
-        text-align: center;
-        float: right;
-        padding-right: 0;
-    }
-
-    img:nth-child(6) {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        padding-top: 10px;
-    }
-
-    p:nth-child(7){
-        margin: 0;
-        font-size: 110%;
-        line-height: 2.5;
-        display: block;
-        width: 80%;
-        text-align: left;
-    }
-
-    p:nth-child(8){
-        margin: 0;
-        font-size: 90%;
-        line-height: 2.5;
-        display: block;
-        width: 80%;
-        text-align: left;
-    }
-
-    p:nth-child(9){
-        margin: 0;
-        font-size: 110%;
-        line-height: 2.5;
-        display: inline-block;
-        width: 13%;
-        text-align: center;
-        padding-left: 10px;
-    }
-
-    p:nth-child(10){
-        margin: 0;
-        font-size: 80%;
-        line-height: 2.5;
-        display: inline-block;
-        width: 13%;
-        text-align: center;
-        padding-left: 5px;
-    }
-
-    p:nth-child(11){
-        margin: 0;
-        font-size: 110%;
-        line-height: 2.5;
-        display: inline-block;
-        width: 13%;
-        text-align: center;
-        padding-left: 10px;
-    }
-
-    p:nth-child(12){
-        margin: 0;
-        font-size: 80%;
-        line-height: 2.5;
-        display: inline-block;
-        width: 13%;
-        text-align: center;
-        padding-left: 5px;
-    }
-
-    p:nth-child(13){
-        margin: 0;
-        font-size: 110%;
-        line-height: 2.5;
-        display: inline-block;
-        width: 13%;
-        text-align: center;
-        padding-left: 10px;
-    }
-
-    p:nth-child(14){
-        margin: 0;
-        font-size: 80%;
-        line-height: 2.5;
-        display: inline-block;
-        width: 13%;
-        text-align: center;
-        padding-left: 5px;
-    }
-    p:nth-child(15){
-        margin: 0;
-        font-size: 110%;
-        line-height: 2.5;
-        display: inline-block;
-        width: 13%;
-        text-align: center;
-        padding-left: 10px;
-    }
-    p:nth-child(16){
-        margin: 0;
-        font-size: 80%;
-        line-height: 2.5;
-        display: inline-block;
-        width: 13%;
-        text-align: center;
-        padding-left: 5px;
-    }
-    p:nth-child(17){
-        margin: 0;
-        font-size: 110%;
-        line-height: 2.5;
-        display: inline-block;
-        width: 13%;
-        text-align: center;
-        padding-left: 10px;
-    }
-    p:nth-child(18){
-        margin: 0;
-        font-size: 80%;
-        line-height: 2.5;
-        display: inline-block;
-        width: 13%;
-        text-align: center;
-        padding-left: 5px;
-    }
-    p:nth-child(19){
-        margin: 0;
-        font-size: 110%;
-        line-height: 2.5;
-        display: inline-block;
-        width: 13%;
-        text-align: center;
-        padding-left: 10px;
-    }
-    p:nth-child(20){
-        margin: 0;
-        font-size: 80%;
-        line-height: 2.5;
-        display: inline-block;
-        width: 13%;
-        text-align: center;
-        padding-left: 5px;
-    }
 `
 
 

@@ -5,7 +5,7 @@ import { MainBox } from "./style"
 import logo from "../../assets/images/logo.png";
 import profile from '../../assets/images/profile.svg';
 import photoex from '../../assets/images/photoex.png';
-import { getMemberInfo, getPostInfo, getSearchInfo, reaction } from "../../apis/mainApi/apis";
+import { getMemberInfo, getPostInfo, getSearchInfo, reaction, deletePost } from "../../apis/mainApi/apis";
 import useInput from "../../hooks/useInput";
 
 function Body() {
@@ -124,28 +124,32 @@ function Body() {
 
                     // 게시물 렌더링
                     feedBox.innerHTML = prev + `
-                    <div id=${postId}>
                         <img src=${image} id="toMyPage_${postMemberId}"/>
-                        <p>${name}</p>
-                        <p>삭제</p> 
+                        <p id="name">${name}</p>
+                        <p id="delete${postMemberId}">삭제</p> 
                         <p>|</p>
-                        <p id="edit">수정</p> 
+                        <p id="edit${postMemberId}">수정</p> 
                         <img src=${photo} /> 
                         <p>${title}</p>
                         <p>${content}</p>
-                        <p id="clickSmile${postId}">😄</p>
-                        <p id="clickSmileCnt">${smileCnt}</p>
-                        <p id="clickGood${postId}">👍</p>
-                        <p id="clickGoodCnt">${goodCnt}</p>
-                        <p id="clickSad${postId}">😥</p>
-                        <p id="clickSadCnt">${sadCnt}</p>
-                        <p id="clickHeart${postId}">💗</p>
-                        <p id="clickHeartCnt">${heartCnt}</p>
-                        <p id="clickWorry${postId}">😧</p>
-                        <p id="clickWorryCnt">${worryCnt}</p>
-                        <p id="clickCheck${postId}">✔</p>
-                        <p id="clickCheckCnt">${checkCnt}</p>    
-                    </div>
+                        <div id="reactionBox">
+                            <div>
+                                <p id="clickSmile${postId}">😄</p>
+                                <p id="clickGood${postId}">👍</p>
+                                <p id="clickSad${postId}">😥</p>
+                                <p id="clickHeart${postId}">💗</p>
+                                <p id="clickWorry${postId}">😧</p>
+                                <p id="clickCheck${postId}">✔</p>
+                            </div>
+                            <div>
+                                <p id="clickSmileCnt">${smileCnt}</p>
+                                <p id="clickGoodCnt">${goodCnt}</p>
+                                <p id="clickSadCnt">${sadCnt}</p>
+                                <p id="clickHeartCnt">${heartCnt}</p>
+                                <p id="clickWorryCnt">${worryCnt}</p>
+                                <p id="clickCheckCnt">${checkCnt}</p>
+                            </div>
+                        </div>    
                 `;
                 }
             }
@@ -191,6 +195,22 @@ function Body() {
             // 수정 페이지로
             navigate(`/${familyCode}/${memberId}/${currPostId}/update`);
             return;
+        }
+
+        // 삭제 버튼 누를 시
+        else if (order == 'delete') {
+            const postMemberId = order.slice(0,6)
+            // 작성자=유저라면
+            if (postMemberId === memberId){
+                const check = window.confirm('정말 삭제하시겠습니까?');
+                if(check){
+                    const postId = e.target.parentElement.parentElement.id;
+                    deletePost(navigate, familyId, memberId, postId, familyCode);
+                }
+            }
+            else{
+                alert('본인의 게시물이 아니면 삭제할 수 없어요');
+            }
         }
 
         // 프로필 사진을 선택했다면 (게시글의)
