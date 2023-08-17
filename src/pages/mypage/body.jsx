@@ -243,9 +243,14 @@ function Body() {
     const [popUp, setPopUp] = useState(false);
     const [popUpImage, setPopUpImage] = useState('');
     const handleOnClickImageBox = async () => {
-        const popUpImage = await getPopUpImage(memberId);
-        setPopUpImage(popUpImage);
-        setPopUp(true);
+        if (image) {
+            const popUpImage = await getPopUpImage(memberId);
+            setPopUpImage(popUpImage);
+            setPopUp(true);
+        }
+        else{
+            alert('등록된 이미지가 없어요');
+        }
     }
     if(popUp){
         const popUpBox = document.getElementById('popUpBox');
