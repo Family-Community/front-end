@@ -52,3 +52,11 @@ export const addReaction = async (familyId, memberId, postId, reactionType) => {
     })
     return reactionCheck;
 }
+
+export const getPopUpImage = async(memberId) => {
+    let popUpImage = '';
+    await serverApi.get(`https://port-0-back-end-eu1k2llkz11als.sel4.cloudtype.app/group/${memberId}/image/`).then((response)=>{
+        popUpImage = response.data.image_original;
+    })
+    return popUpImage;
+}

@@ -1,6 +1,31 @@
 import styled from "styled-components";
 
 export const MyPageBody = styled.div`
+
+    #popUplayOut{
+        position: fixed;
+        left: 0;
+        top:0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        background-color: #aaaaaa;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        #popUpBox{
+            width: 300px;
+            height: 300px;
+            background-color: #fff;
+            border-radius: 50%;
+            z-index: 2;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            box-sizing: border-box;
+        }
+    }
+
     #userInfoBox{
         display: flex;
         width: 90%;
@@ -49,6 +74,7 @@ export const MyPageBody = styled.div`
         flex-direction: column;
         justify-content: center;
         font-size: 150%;
+        padding-top: 50px;
         div{
             margin: 0 auto;
             box-sizing: border-box;

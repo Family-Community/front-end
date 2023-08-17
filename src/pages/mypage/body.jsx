@@ -1,6 +1,6 @@
 import { MyPageBody } from "./style";
 import { useNavigate, useParams } from "react-router-dom";
-import { getFamilyInfo, getMemberInfo, getMemberPost, deletePost, addReaction } from "../../apis/mypageApi/apis";
+import { getFamilyInfo, getMemberInfo, getMemberPost, deletePost, addReaction, getPopUpImage } from "../../apis/mypageApi/apis";
 import { useEffect, useState } from "react";
 import profile from "../../assets/images/profile.svg";
 
@@ -239,15 +239,39 @@ function Body() {
         }
     }
 
+    // 고화질 프사 제공 구현 (팝업)
+    const [popUp, setPopUp] = useState(false);
+    const [popUpImage, setPopUpImage] = useState('');
+    const handleOnClickImageBox = async () => {
+        const popUpImage = await getPopUpImage(memberId);
+        setPopUpImage(popUpImage);
+        setPopUp(true);
+    }
+    if(popUp){
+        const popUpBox = document.getElementById('popUpBox');
+        if(popUpBox){
+            popUpBox.style.backgroundImage = `url(${popUpImage})`;
+            popUpBox.style.border = `2px solid ${color}`;
+        }
+    }
+    const handleOnClickPopUp = () => {
+        setPopUp(false);
+    }
+
     useEffect(() => {
         findUserPost();
     }, [])
 
     return (
         <MyPageBody>
+            {popUp && (
+                <div id="popUplayOut" onClick={handleOnClickPopUp}>
+                    <div id="popUpBox"></div>
+                </div>
+            )}
             <div id="userInfoBox">
                 <p><span id="nameSpan"></span> 님의 게시물</p>
-                <p id="imageBox"></p>
+                <p id="imageBox" onClick={handleOnClickImageBox}></p>
             </div>
             <div id="feedBox" onClick={handleOnClickPost}>
                 {Array.isArray(post) && post.length > 0 ? (
