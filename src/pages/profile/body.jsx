@@ -6,7 +6,7 @@ import profile from "../../assets/images/profile.svg";
 function Body() {
     
     // familyCode
-    const familyCode = useParams().family_code;
+    const familyCode = useParams().familyCode;
     
     // familyInfo
     const location = useLocation();

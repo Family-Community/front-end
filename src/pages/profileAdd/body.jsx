@@ -6,7 +6,7 @@ import useInput from "../../hooks/useInput";
 function Body() {
 
     // familyCode
-    const familyCode = useParams().family_code;
+    const familyCode = useParams().familyCode;
 
     // fmailyInfo 가져오기
     const [familyId, setfamilyId] = useState('');

@@ -1,4 +1,5 @@
 import { HeaderBox } from "./style"
+import { useParams, useNavigate } from "react-router-dom";
 
 function Body() {
     const handleOnClick = (e) => {
