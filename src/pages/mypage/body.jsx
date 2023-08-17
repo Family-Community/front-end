@@ -138,8 +138,13 @@ function Body() {
         const order = e.target.id;
         // 수정 클릭 시
         if (order === 'edit'){
-            const postId = e.target.parentElement.parentElement.id;
-            navigate(`/${familyCode}/${memberId}/${postId}/update`);
+            if(me === 'true'){
+                const postId = e.target.parentElement.parentElement.id;
+                navigate(`/${familyCode}/${memberId}/${postId}/update`);
+            }
+            else{
+                alert('본인의 게시물이 아니면 수정할 수 없어요');
+            }          
         }
         // 삭제 클릭 시
         else if (order === 'delete'){
