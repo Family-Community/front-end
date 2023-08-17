@@ -135,7 +135,7 @@ function Body() {
             }
 
             // 링크생성
-            const link = `https://front-end-xi-bice.vercel.app//${familyCode}/profileAuth`;
+            const link = `https://front-end-xi-bice.vercel.app/${familyCode}/profileAuth`;
             
             Kakao.Share.createDefaultButton({
                 container: '#kakaotalk-sharing-btn',
