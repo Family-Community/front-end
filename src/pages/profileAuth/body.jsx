@@ -37,7 +37,12 @@ function Body() {
     const navigate = useNavigate();
     const handleOnSubmit = (e) => {
         e.preventDefault();
-        checkEntryNumber(navigate, familyId, entryNumber, familyCode, familyName, color);
+        if(entryNumber){
+            checkEntryNumber(navigate, familyId, entryNumber, familyCode, familyName, color);
+        }
+        else{
+            alert('입장 번호를 입력해 주세요');
+        }     
     }
 
     // 버튼 활성화 구현
