@@ -78,10 +78,11 @@ function Body() {
     const setFeeds = () => {
         const feedBox = document.getElementById('feedBox');
         feedBox.style.fontSize = '100%';
+        feedBox.style.display = 'block';
         const lenOfPost = post.length;
         // 초기화
         feedBox.innerHTML = '';
-        for (let i=0; i < lenOfPost; i++){
+        for (let i=lenOfPost - 1; i >= 0; i--){
             // 이전까지의 post
             const prevPost = feedBox.innerHTML;
 

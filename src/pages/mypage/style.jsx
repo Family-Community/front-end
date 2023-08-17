@@ -74,7 +74,7 @@ export const MyPageBody = styled.div`
         flex-direction: column;
         justify-content: center;
         font-size: 150%;
-        padding-top: 50px;
+        padding-top: 10px;
         div{
             margin: 0 auto;
             box-sizing: border-box;
