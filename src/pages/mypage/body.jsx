@@ -77,6 +77,7 @@ function Body() {
     // 피드 보여주기
     const setFeeds = () => {
         const feedBox = document.getElementById('feedBox');
+        feedBox.style.fontSize = '100%';
         const lenOfPost = post.length;
         // 초기화
         feedBox.innerHTML = '';
@@ -249,7 +250,11 @@ function Body() {
                 <p id="imageBox"></p>
             </div>
             <div id="feedBox" onClick={handleOnClickPost}>
-                {Array.isArray(post) && post.length > 0 ? setFeeds() : (<p id="noFeeds">아직 게시글이 없어요</p>)}
+                {Array.isArray(post) && post.length > 0 ? (
+                    setFeeds()
+                    ) : (
+                        '아직 게시글이 없어요'
+                )}
             </div>
             <p id="toEditProfileBtn" onClick={handleOnClickToEditProfile}>내 정보 수정</p>
         </MyPageBody>
