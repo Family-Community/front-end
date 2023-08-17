@@ -24,21 +24,15 @@ export const MainHeaderBox = styled.div`
     }
 
     input {
-        width: 230px;
+        width: 260px;
         height: 30%;
-        font-size: 110%;
+        font-size: 95%;
         border:none;
         text-align: center;
-        margin-right: 60px;
+        margin-right: 30px;
+        margin-left: 10px;
     }
 
-    p:nth-child(3) {
-        width: 40px;
-        height: 40px;
-        background-position: right;
-        background-repeat: no-repeat;
-        background-size: contain;
-    }
 `
 
 export const ProfileLink = styled(Link)`
@@ -46,7 +40,7 @@ export const ProfileLink = styled(Link)`
     width: 30px;
     height: 30px;
     margin-right: 15px;
-    p{
+    img{
         display: block;
         width: 40px;
         height: 40px;
@@ -54,7 +48,7 @@ export const ProfileLink = styled(Link)`
         margin-right: 15px;
         margin-top: 0;
         margin-bottom: 0;
-        background-position: right;
+        background-position: center;
         background-repeat: no-repeat;
         background-size: contain;
     }

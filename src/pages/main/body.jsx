@@ -43,21 +43,27 @@ function Body() {
         }
     }
 
+    const setProfileImage = () => {
+        const profileimg = document.getElementById('profileimg');
+        profileimg.style.backgroundImage = `url(${image})`;
+    }
+
     useEffect(()=> {
         findMemberInfo();
+        setProfileImage();
     },[])
 
-    // color, name, image를 갖췄을 때
-    useEffect(() => {
-        if (color && name) {
-            if (!image) {
-                image = profile;
-            } else {
-                const profileImg = document.getElementById("profileImg");
-                profileImg.style.backgroundImage = `url(${image})`;
-            }
-        }
-    }, []);
+    // // color, name, image를 갖췄을 때
+    // useEffect(() => {
+    //     if (color && name) {
+    //         if (!image) {
+    //             image = profile;
+    //         } 
+            // const profileImg = document.getElementById("profileImg");
+            // profileImg.style.backgroundImage = `url(${image})`;
+            
+    //     }
+    // }, []);
 
     // 컬러 설정
     if (familyId && color){
@@ -243,7 +249,7 @@ function Body() {
                     onChange={onChangeSearchContent}
                 />
                 <ProfileLink to={`/${familyCode}/${memberId}/true`}>
-                    <p id="profileimg"></p>
+                    <img id="profileimg"></img>
                 </ProfileLink>
             </MainHeaderBox>
             <MainBox style={{border : `2px solid ${color}`}}>
