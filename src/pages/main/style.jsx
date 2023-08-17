@@ -28,9 +28,10 @@ export const MainHeaderBox = styled.div`
         height: 30%;
         font-size: 95%;
         border:none;
-        text-align: center;
-        margin-right: 30px;
+        text-align: left;
+        margin-right: 20px;
         margin-left: 10px;
+        border-radius: 40px;
     }
 
 `
@@ -65,7 +66,7 @@ export const MainBox = styled.div`
     overflow: scroll;
     margin-top: 30px;
 
-    #feedBox{       
+    #feedBox{     
         #name{
             transform: translateY(-7px);
         }
@@ -96,7 +97,7 @@ export const MainBox = styled.div`
             font-size: 80%;
             line-height: 2.5;
             display: inline-block;
-            width: 8%;
+            width: 10%;
             text-align: center;
             float: right;
         }
@@ -116,7 +117,7 @@ export const MainBox = styled.div`
             font-size: 80%;
             line-height: 2.5;
             display: inline-block;
-            width: 8%;
+            width: 10%;
             text-align: center;
             float: right;
             padding-right: 0;
@@ -194,6 +195,7 @@ export const MainBox = styled.div`
                     width: 100%;
                     height: 30px;
                     margin-top: 10px;
+                    margin-bottom: 20px;
                     p{
                         width: 30px;
                         height: 30px;
@@ -202,22 +204,28 @@ export const MainBox = styled.div`
                         line-height: 30px;
                     }
                     p:nth-child(1){
+                        font-size: 16px;
                         place-items: center;
                     }
                     p:nth-child(2){
                         padding: 0;
+                        font-size: 16px;
                         place-items: center;
                     }
                     p:nth-child(3){
-                        font-size: 20px;
+                        font-size: 16px;
                         place-items: center;
                     }
                     p:nth-child(4){
-                        font-size: 20px;
+                        font-size: 16px;
                         place-items: center;
                     }
                     p:nth-child(5){
-                        font-size: 20px;
+                        font-size: 16px;
+                        place-items: center;
+                    }
+                    p:nth-child(6){
+                        font-size: 16px;
                         place-items: center;
                     }
                 }

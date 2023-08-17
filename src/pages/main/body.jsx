@@ -29,41 +29,39 @@ function Body() {
     const [image, setImage] = useState('');
     const [name, setName] = useState('');
 
-    const findMemberInfo = async () => {
-        // 정상 접근 시
+    const loadMemberInfoAndProfileImage = async () => {
         try {
             const memberInfo = await getMemberInfo(familyId, memberId);
             setColor(memberInfo[0]);
             setImage(memberInfo[1]);
             setName(memberInfo[2]);
-        }
-        // 비정상 접근 시
-        catch (err) {
-            console.log(err)
-        }
-    }
-
-    const setProfileImage = () => {
-        const profileimg = document.getElementById('profileimg');
-        profileimg.style.backgroundImage = `url(${image})`;
-    }
-
-    useEffect(()=> {
-        findMemberInfo();
-        setProfileImage();
-    },[])
-
-    // // color, name, image를 갖췄을 때
-    // useEffect(() => {
-    //     if (color && name) {
-    //         if (!image) {
-    //             image = profile;
-    //         } 
-            // const profileImg = document.getElementById("profileImg");
-            // profileImg.style.backgroundImage = `url(${image})`;
             
-    //     }
-    // }, []);
+            // if (memberInfo[1]==null){
+            //     setProfileImage(profile)
+            // }
+            // 이미지 로딩 후에 프로필 이미지 설정
+            setProfileImage(memberInfo[1]);
+            
+        } catch (err) {
+            console.log(err);
+        }
+    };
+    
+    const setProfileImage = (imageUrl) => {
+        if (imageUrl==null){
+            const profileimg = document.getElementById('profileimg');
+            profileimg.style.backgroundImage = `url(${profile})`
+        }
+        else {
+            const profileimg = document.getElementById('profileimg');
+            profileimg.style.backgroundImage = `url(${imageUrl})`;
+        }
+    };
+    
+    useEffect(() => {
+        loadMemberInfoAndProfileImage();
+    }, []);
+
 
     // 컬러 설정
     if (familyId && color){
@@ -98,7 +96,7 @@ function Body() {
                 </div>
                 `;
             } else {
-                for (let i = 0; i < numberOfPostNumber; i++) {
+                for (let i=numberOfPostNumber - 1; i >= 0; i--) {
                     //이전까지의 피드
                     const prev = feedBox.innerHTML;
 
@@ -124,6 +122,7 @@ function Body() {
 
                     // 게시물 렌더링
                     feedBox.innerHTML = prev + `
+                    <div id=${postId}>
                         <img src=${image} id="toMyPage_${postMemberId}"/>
                         <p id="name">${name}</p>
                         <p id="delete${postMemberId}">삭제</p> 
@@ -150,6 +149,7 @@ function Body() {
                                 <p id="clickCheckCnt">${checkCnt}</p>
                             </div>
                         </div>    
+                    </div>
                 `;
                 }
             }
@@ -180,6 +180,8 @@ function Body() {
     }
     if (searchContent) {
         findSearchInfo();
+        // 검색어 한 번에 삭제하는 버튼 등장
+        
     }
 
     // feedBox 클릭 시
@@ -189,7 +191,7 @@ function Body() {
         const order = e.target.id;
 
         // 수정 버튼 누를 시
-        if (order === 'edit') {
+        if (order.slice(0,4) === 'edit') {
             // postId 따기
             const currPostId = e.target.parentNode.id;
             // 수정 페이지로
@@ -198,13 +200,13 @@ function Body() {
         }
 
         // 삭제 버튼 누를 시
-        else if (order == 'delete') {
-            const postMemberId = order.slice(0,6)
+        else if (order.slice(0,6) == 'delete') {
+            const postMemberId = order.slice(6)
             // 작성자=유저라면
             if (postMemberId === memberId){
                 const check = window.confirm('정말 삭제하시겠습니까?');
                 if(check){
-                    const postId = e.target.parentElement.parentElement.id;
+                    const postId = e.target.parentNode.id;
                     deletePost(navigate, familyId, memberId, postId, familyCode);
                 }
             }
