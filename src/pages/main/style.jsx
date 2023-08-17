@@ -24,7 +24,9 @@ export const MainHeaderBox = styled.div`
     }
 
     input {
-        width: 100px;
+        width: 230px;
+        height: 30%;
+        font-size: 110%;
         border:none;
         text-align: center;
         margin-right: 60px;
@@ -269,9 +271,9 @@ export const ButtonContainer = styled.div`
         appearance: none;
         width: 30%;
         line-height: 2;
-        font-size: 100%;
+        font-size: 120%;
         border: none;
-        color: #505050;
+        color: #ffffff;
         opacity: 0.7;
         cursor: pointer;
         border-radius: 40px;

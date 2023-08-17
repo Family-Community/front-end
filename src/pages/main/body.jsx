@@ -50,8 +50,12 @@ function Body() {
     // color, name, image를 갖췄을 때
     useEffect(() => {
         if (color && name) {
-            const profileImg = document.getElementById("profileImg");
-            profileImg.style.backgroundImage = `url(${image})`;
+            if (!image) {
+                image = profile;
+            } else {
+                const profileImg = document.getElementById("profileImg");
+                profileImg.style.backgroundImage = `url(${image})`;
+            }
         }
     }, []);
 
@@ -188,10 +192,10 @@ function Body() {
             const postMemberId = order.slice(9);
             // 누른 사람과 프로필 사진의 사람이 같으면
             if (postMemberId === memberId) {
-                navigate(`/${familyCode}/${memberId}/true`);
+                navigate(`/${familyCode}/${postMemberId}/true`);
             }
             else {
-                navigate(`/${familyCode}/${memberId}/false`);
+                navigate(`/${familyCode}/${postMemberId}/false`);
             }
         }
 
@@ -235,7 +239,7 @@ function Body() {
                 <input
                     id="searchInput"
                     type="text"
-                    placeholder="게시물 검색"
+                    placeholder="게시물 검색(이름, 제목, 내용)"
                     onChange={onChangeSearchContent}
                 />
                 <ProfileLink to={`/${familyCode}/${memberId}/true`}>

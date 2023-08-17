@@ -37,7 +37,6 @@ export const getSearchInfo = async(familyId, searchContent) => {
 export const reaction = async(navigate, familyCode, familyId, memberId, postId, reactionNum) => {
 
     await serverApi.post(`https://port-0-back-end-eu1k2llkz11als.sel4.cloudtype.app/contents/${familyId}/${memberId}/${postId}/reaction/${reactionNum}/`).then((response)=> {
-        console.log(response);
     })
 
 }
