@@ -44,6 +44,16 @@ export const MyPageBody = styled.div`
         border-radius: 5px;
         box-sizing: border-box;
         overflow: scroll;
+        #noFeeds{
+            font-size: 130%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            justify-content: center;
+        }
         div{
             margin: 0 auto;
             box-sizing: border-box;

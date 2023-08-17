@@ -1,7 +1,8 @@
 import { MyPageBody } from "./style";
 import { useNavigate, useParams } from "react-router-dom";
 import { getFamilyInfo, getMemberInfo, getMemberPost, deletePost, addReaction } from "../../apis/mypageApi/apis";
-import { useEffect, useState } from "react"; 
+import { useEffect, useState } from "react";
+import profile from "../../assets/images/profile.svg";
 
 function Body() {
 
@@ -36,7 +37,6 @@ function Body() {
     if(familyId && color && familyName){
         findMemberInfo();
     }
-
     // color, memberInfo 적용
     if(color && name && familyName){
 
@@ -45,7 +45,13 @@ function Body() {
         nameSpan.style.color = color;
 
         const imageBox = document.getElementById('imageBox');
-        imageBox.style.backgroundImage = `url(${image})`;
+        if (!image) {
+            imageBox.style.backgroundImage = `url(${profile})`;
+        }
+        else{
+            imageBox.style.backgroundImage = `url(${image})`;
+        }
+        
 
         const toEditProfileBtn = document.getElementById('toEditProfileBtn');
         toEditProfileBtn.style.backgroundColor = color;
@@ -243,7 +249,7 @@ function Body() {
                 <p id="imageBox"></p>
             </div>
             <div id="feedBox" onClick={handleOnClickPost}>
-                {Array.isArray(post) ? setFeeds() : '아직 피드가 없어요'}
+                {Array.isArray(post) && post.length > 0 ? setFeeds() : (<p id="noFeeds">아직 게시글이 없어요</p>)}
             </div>
             <p id="toEditProfileBtn" onClick={handleOnClickToEditProfile}>내 정보 수정</p>
         </MyPageBody>
