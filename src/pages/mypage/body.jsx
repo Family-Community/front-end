@@ -90,12 +90,13 @@ function Body() {
             const sadCnt = post[i].sad_cnt;
             const smileCnt = post[i].smile_cnt;
             const worryCnt = post[i].worry_cnt;
+            const memberIdOfPost = post[i].member.id;
 
             // post 추가하기
             feedBox.innerHTML = prevPost + `
                 <div id="${postId}" style="border : 2px solid ${color}">
                     <div>
-                        <p style="background-image : url(${image})"></p>
+                        <p id="${memberIdOfPost}" style="background-image : url(${image})"></p>
                         <p>${title}</p>
                         <p id="edit">수정</p>
                         <p id="delete">삭제</p>
@@ -153,73 +154,79 @@ function Body() {
             if (reactionType === 'Smile'){
                 const reactionCheck = await addReaction(familyId, memberId, postId, 1);
                 const cntSmile = document.getElementById(`cntSmile${postId}`);
-                // 0 -> 1의 경우
+                const currCnt = Number(cntSmile.innerText);
+                // 올라갈 경우
                 if (reactionCheck) {
-                    cntSmile.innerText='1';
+                    cntSmile.innerText=`${currCnt+1}`;
                 }
-                // 1 -> 0의 경우
+                // 내려갈 경우
                 else{
-                    cntSmile.innerText='0';
+                    cntSmile.innerText=`${currCnt-1}`;
                 }
             }
             else if (reactionType === 'Good'){
                 const reactionCheck = await addReaction(familyId, memberId, postId, 2);
                 const cntGood = document.getElementById(`cntGood${postId}`);
-                // 0 -> 1의 경우
+                const currCnt = Number(cntGood.innerText);
+                // 올라갈 경우
                 if (reactionCheck) {
-                    cntGood.innerText='1';
+                    cntGood.innerText=`${currCnt + 1}`;
                 }
-                // 1 -> 0의 경우
+                // 내려갈 경우
                 else{
-                    cntGood.innerText='0';
+                    cntGood.innerText=`${currCnt - 1}`;
                 }
             }
             else if (reactionType === 'Sad'){
                 const reactionCheck = await addReaction(familyId, memberId, postId, 3);
                 const cntSad = document.getElementById(`cntSad${postId}`);
-                // 0 -> 1의 경우
+                const currCnt = Number(cntSad.innerText);
+                // 올라갈 경우
                 if (reactionCheck) {
-                    cntSad.innerText='1';
+                    cntSad.innerText=`${currCnt + 1}`;
                 }
-                // 1 -> 0의 경우
+                // 내려갈 경우
                 else{
-                    cntSad.innerText='0';
+                    cntSad.innerText=`${currCnt - 1}`;
                 }
             }
             else if (reactionType === 'Heart'){
                 const reactionCheck = await addReaction(familyId, memberId, postId, 4);
                 const cntHeart = document.getElementById(`cntHeart${postId}`);
-                // 0 -> 1의 경우
+                const currCnt = Number(cntHeart.innerText);
+                // 올라갈 경우
                 if (reactionCheck) {
-                    cntHeart.innerText='1';
+                    cntHeart.innerText=`${currCnt + 1}`;
                 }
-                // 1 -> 0의 경우
+                // 내려갈 경우
                 else{
-                    cntHeart.innerText='0';
+                    cntHeart.innerText=`${currCnt - 1}`;
                 }
             }
             else if (reactionType === 'Worry'){
                 const reactionCheck = await addReaction(familyId, memberId, postId, 5);
                 const cntWorry = document.getElementById(`cntWorry${postId}`);
-                // 0 -> 1의 경우
+                const currCnt = Number(cntWorry.innerText);
+                // 올라갈 경우
                 if (reactionCheck) {
-                    cntWorry.innerText='1';
+                    cntWorry.innerText=`${currCnt + 1}`;
                 }
-                // 1 -> 0의 경우
+                // 내려갈 경우
                 else{
-                    cntWorry.innerText='0';
+                    cntWorry.innerText=`${currCnt - 1}`;
                 }
             }
             else if (reactionType === 'Check'){
                 const reactionCheck = await addReaction(familyId, memberId, postId, 6);
                 const cntCheck = document.getElementById(`cntCheck${postId}`);
-                // 0 -> 1의 경우
+                const currCnt = Number(cntCheck.innerText);
+                // 올라갈 경우
                 if (reactionCheck) {
-                    cntCheck.innerText='1';
+                    cntCheck.innerText=`${currCnt + 1}`;
                 }
-                // 1 -> 0의 경우
+                // 내려갈 경우
                 else{
-                    cntCheck.innerText='0';
+                    cntCheck.innerText=`${currCnt - 1}`;
                 }
             }
         }
