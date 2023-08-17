@@ -11,7 +11,7 @@ function Body() {
     const [familyId, setFamilyId] = useState('');
     const [familyName, setFamilyName] = useState('');
     const [color, setColor] = useState('');
-    const familyCode = useParams('familyCode').family_code;
+    const familyCode = useParams().familyCode;
     const findFamilyInfo = async() => {
         const familyInfo = await getFamilyInfo(familyCode);
         const familyId = familyInfo[0];

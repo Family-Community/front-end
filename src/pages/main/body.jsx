@@ -80,8 +80,8 @@ function Body() {
             setPost(postInfo);
         } catch (err) {
             //비정상 접근 시
-            // navigate(`/${familyCode}/profileAuth`);
-            console.log(err);
+            navigate(`/${familyCode}/profileAuth`);
+            // console.log(err);
         }
     }
 
