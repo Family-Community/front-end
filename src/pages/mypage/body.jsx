@@ -6,9 +6,9 @@ import profile from "../../assets/images/profile.svg";
 
 function Body() {
 
-    // familyCode, memberId, me(접근자 정보) 뽑기
+    // familyCode, postMemberId, me(접근자 정보) 뽑기
     const familyCode = useParams().familyCode;
-    const memberId = useParams().memberId;
+    const postMemberId = useParams().postMemberId;
     const me = useParams().me;
 
     // familyId, color, familyName, name, image 가져오기
@@ -28,7 +28,7 @@ function Body() {
     }
     findFamilyInfo();
     const findMemberInfo = async() => {
-        const memberInfo = await getMemberInfo(familyId, memberId);
+        const memberInfo = await getMemberInfo(familyId, postMemberId);
         const name = memberInfo[0];
         const image = memberInfo[1];
         setName(name);
@@ -64,13 +64,13 @@ function Body() {
     // 내 정보 수정 버튼 클릭 시
     const navigate = useNavigate();
     const handleOnClickToEditProfile = () => {
-        navigate(`/${familyCode}/${memberId}/profileEdit`);
+        navigate(`/${familyCode}/${postMemberId}/profileEdit`);
     }
 
     // 유저의 게시글 불러오기
     const [post, setPost] = useState('');
     const findUserPost = async() => {
-        const post = await getMemberPost(memberId);
+        const post = await getMemberPost(postMemberId);
         setPost(post);
     }
 
@@ -141,7 +141,7 @@ function Body() {
         if (order === 'edit'){
             if(me === 'true'){
                 const postId = e.target.parentElement.parentElement.id;
-                navigate(`/${familyCode}/${memberId}/${postId}/update`);
+                navigate(`/${familyCode}/${postMemberId}/${postId}/update`);
             }
             else{
                 alert('본인의 게시물이 아니면 수정할 수 없어요');
@@ -153,7 +153,7 @@ function Body() {
                 const check = window.confirm('정말 삭제하시겠습니까?');
                 if(check){
                     const postId = e.target.parentElement.parentElement.id;
-                    deletePost(navigate, familyId, memberId, postId, familyCode);
+                    deletePost(navigate, familyId, postMemberId, postId, familyCode);
                 }
             }
             else{
@@ -165,7 +165,7 @@ function Body() {
             const reactionType = order.slice(5);
             const postId = e.target.parentElement.parentElement.parentElement.id;
             if (reactionType === 'Smile'){
-                const reactionCheck = await addReaction(familyId, memberId, postId, 1);
+                const reactionCheck = await addReaction(familyId, postMemberId, postId, 1);
                 const cntSmile = document.getElementById(`cntSmile${postId}`);
                 const currCnt = Number(cntSmile.innerText);
                 // 올라갈 경우
@@ -178,7 +178,7 @@ function Body() {
                 }
             }
             else if (reactionType === 'Good'){
-                const reactionCheck = await addReaction(familyId, memberId, postId, 2);
+                const reactionCheck = await addReaction(familyId, postMemberId, postId, 2);
                 const cntGood = document.getElementById(`cntGood${postId}`);
                 const currCnt = Number(cntGood.innerText);
                 // 올라갈 경우
@@ -191,7 +191,7 @@ function Body() {
                 }
             }
             else if (reactionType === 'Sad'){
-                const reactionCheck = await addReaction(familyId, memberId, postId, 3);
+                const reactionCheck = await addReaction(familyId, postMemberId, postId, 3);
                 const cntSad = document.getElementById(`cntSad${postId}`);
                 const currCnt = Number(cntSad.innerText);
                 // 올라갈 경우
@@ -204,7 +204,7 @@ function Body() {
                 }
             }
             else if (reactionType === 'Heart'){
-                const reactionCheck = await addReaction(familyId, memberId, postId, 4);
+                const reactionCheck = await addReaction(familyId, postMemberId, postId, 4);
                 const cntHeart = document.getElementById(`cntHeart${postId}`);
                 const currCnt = Number(cntHeart.innerText);
                 // 올라갈 경우
@@ -217,7 +217,7 @@ function Body() {
                 }
             }
             else if (reactionType === 'Worry'){
-                const reactionCheck = await addReaction(familyId, memberId, postId, 5);
+                const reactionCheck = await addReaction(familyId, postMemberId, postId, 5);
                 const cntWorry = document.getElementById(`cntWorry${postId}`);
                 const currCnt = Number(cntWorry.innerText);
                 // 올라갈 경우
@@ -230,7 +230,7 @@ function Body() {
                 }
             }
             else if (reactionType === 'Check'){
-                const reactionCheck = await addReaction(familyId, memberId, postId, 6);
+                const reactionCheck = await addReaction(familyId, postMemberId, postId, 6);
                 const cntCheck = document.getElementById(`cntCheck${postId}`);
                 const currCnt = Number(cntCheck.innerText);
                 // 올라갈 경우
@@ -250,7 +250,7 @@ function Body() {
     const [popUpImage, setPopUpImage] = useState('');
     const handleOnClickImageBox = async () => {
         if (image) {
-            const popUpImage = await getPopUpImage(memberId);
+            const popUpImage = await getPopUpImage(postMemberId);
             setPopUpImage(popUpImage);
             setPopUp(true);
         }

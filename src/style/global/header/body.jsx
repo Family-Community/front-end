@@ -1,11 +1,12 @@
 import { HeaderBox } from "./style"
-import { useParams, useNavigate } from "react-router-dom";
-import {getFamilyInfo} from "../../../apis/mypageApi/apis";
+import { useParams, useNavigate, isRouteErrorResponse } from "react-router-dom";
+import { getFamilyInfo } from "../../../apis/mypageApi/apis";
 import { useState } from "react";
 function Body() {
-    // familyCode, memberId
+    // familyCode, memberId, me
     const familyCode = useParams().familyCode;
     const memberId = useParams().memberId;
+    const me = useParams().me;
 
     // familyId
     const [familyId, setFamilyId] = useState('');
@@ -20,6 +21,7 @@ function Body() {
     const navigate = useNavigate();
     const handleOnClick = (e) => {
         e.preventDefault();
+
         if(familyCode && memberId){
             navigate(`/${familyCode}`, {state: {'familyId': familyId, 'memberId': memberId}});
         }

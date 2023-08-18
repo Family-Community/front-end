@@ -14,7 +14,7 @@ function App() {
       <Routes>
         <Route path={`/`} element={<Signup />}></Route>
         <Route path={`/:familyCode`} element={<Main />}></Route>
-        <Route path={`/:familyCode/:memberId/:me`} element={<Mypage />}></Route>
+        <Route path={`/:familyCode/:postMemberId/:memberId/:me`} element={<Mypage />}></Route>
         <Route path={`/:familyCode/profile`} element={<Profile />}></Route>
         <Route path={`/:familyCode/profileAdd`} element={<ProfileAdd />}></Route>
         <Route path={`/:familyCode/:memberId/profileEdit`} element={<ProfileEdit />}></Route>

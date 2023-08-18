@@ -111,7 +111,6 @@ function Body() {
                     }
                     const title = post[i].title;
                     const content = post[i].content;
-                    const date = post[i].date;
 
                     let smileCnt = post[i].smile_cnt;
                     let goodCnt = post[i].good_cnt;
@@ -220,10 +219,10 @@ function Body() {
             const postMemberId = order.slice(9);
             // 누른 사람과 프로필 사진의 사람이 같으면
             if (postMemberId === memberId) {
-                navigate(`/${familyCode}/${postMemberId}/true`);
+                navigate(`/${familyCode}/${postMemberId}/${memberId}/true`);
             }
             else {
-                navigate(`/${familyCode}/${postMemberId}/false`);
+                navigate(`/${familyCode}/${postMemberId}/${memberId}/false`);
             }
         }
 
@@ -270,7 +269,7 @@ function Body() {
                     placeholder="게시물 검색(이름, 제목, 내용)"
                     onChange={onChangeSearchContent}
                 />
-                <ProfileLink to={`/${familyCode}/${memberId}/true`}>
+                <ProfileLink to={`/${familyCode}/${memberId}/${memberId}/true`}>
                     <img id="profileimg"></img>
                 </ProfileLink>
             </MainHeaderBox>
