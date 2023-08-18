@@ -193,8 +193,16 @@ function Body() {
         if (order.slice(0,4) === 'edit') {
             // postId 따기
             const currPostId = e.target.parentNode.id;
-            // 수정 페이지로
-            navigate(`/${familyCode}/${memberId}/${currPostId}/update`);
+            const postMemberId = order.slice(4);
+            // 본인이 맞으면
+            if(memberId === postMemberId){
+                // 수정 페이지로
+                navigate(`/${familyCode}/${memberId}/${currPostId}/update`);
+            }
+            else{
+                alert('본인의 게시물이 아니면 수정할 수 없어요');
+            }
+            
             return;
         }
 
